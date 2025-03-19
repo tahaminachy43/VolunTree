@@ -29,9 +29,22 @@
 		4955D6D52D76944F00E1B619 /* VolunTreeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VolunTreeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		6834C69E2D8B4FCF007AF318 /* Exceptions for "VolunTree" folder in "VolunTree" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 4955D6B92D76944D00E1B619 /* VolunTree */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		4955D6BC2D76944D00E1B619 /* VolunTree */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				6834C69E2D8B4FCF007AF318 /* Exceptions for "VolunTree" folder in "VolunTree" target */,
+			);
 			path = VolunTree;
 			sourceTree = "<group>";
 		};

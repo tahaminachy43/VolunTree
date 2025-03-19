@@ -16,10 +16,10 @@ struct HomePage: View {
                 
                 VStack (spacing: 30){
                     Text("VolunTree")
+                        .font(.custom("Pacifico", size: 40))
                         .font(.largeTitle)
                         .foregroundStyle(Color.darkGreen)
-                        .fontDesign(.serif)     // temporary
-                        .fontWeight(.bold)      // temporary
+                        
                         .padding(.top, 20)
                         .padding(.bottom, 10)
                     
@@ -69,6 +69,7 @@ struct HomePage: View {
                 .frame(maxHeight: .infinity, alignment: .top)
             }
         }
+        .navigationBarBackButtonHidden(true)
        
     }
 }
