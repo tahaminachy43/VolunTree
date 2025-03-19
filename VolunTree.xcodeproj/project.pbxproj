@@ -6,6 +6,10 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		6834C6AB2D8B531E007AF318 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6834C6AA2D8B531E007AF318 /* UIKit.framework */; platformFilters = (ios, xros, ); };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		4955D6CC2D76944F00E1B619 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -27,6 +31,7 @@
 		4955D6BA2D76944D00E1B619 /* VolunTree.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VolunTree.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4955D6CB2D76944F00E1B619 /* VolunTreeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VolunTreeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4955D6D52D76944F00E1B619 /* VolunTreeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VolunTreeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		6834C6AA2D8B531E007AF318 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS18.2.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -65,6 +70,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6834C6AB2D8B531E007AF318 /* UIKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -91,6 +97,7 @@
 				4955D6BC2D76944D00E1B619 /* VolunTree */,
 				4955D6CE2D76944F00E1B619 /* VolunTreeTests */,
 				4955D6D82D76944F00E1B619 /* VolunTreeUITests */,
+				6834C6A92D8B531E007AF318 /* Frameworks */,
 				4955D6BB2D76944D00E1B619 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -103,6 +110,14 @@
 				4955D6D52D76944F00E1B619 /* VolunTreeUITests.xctest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		6834C6A92D8B531E007AF318 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				6834C6AA2D8B531E007AF318 /* UIKit.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -415,6 +430,7 @@
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
+				INFOPLIST_KEY_UIStatusBarStyle = "";
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -454,6 +470,7 @@
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
+				INFOPLIST_KEY_UIStatusBarStyle = "";
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";

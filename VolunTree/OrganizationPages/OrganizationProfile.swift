@@ -8,7 +8,7 @@
 import SwiftUI
 import UIKit
 
-struct Profile: View {
+struct OrganizationProfile: View {
 //  Pfp variables
     @State private var pfp: Image? = Image(systemName: "person.crop.circle")
     @State private var isImagePickerDisplayed: Bool = false

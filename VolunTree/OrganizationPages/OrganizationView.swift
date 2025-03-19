@@ -22,11 +22,11 @@ struct OrganizationView: View {
                     VolunteerRequests()
                 } else if pageNum == 2 {
                     CurrentVolunteers()
-                }else if pageNum == 3{
-                    Profile()
-                }else if pageNum == 4{
+                } else if pageNum == 3 {
+                    OrganizationProfile()
+                } else if pageNum == 4 {
                     VolunteeringApplications()
-                }else if pageNum == 5{
+                } else if pageNum == 5 {
                     RecommendationRequests()
                 }
                 
