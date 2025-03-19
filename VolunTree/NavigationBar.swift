@@ -19,20 +19,31 @@ struct NavigationBar: View {
             Image(systemName: "star.fill")
                 .font(.title)
             Spacer()
-            Image(systemName: "house.fill")
-                .font(.title)
-                .foregroundColor(Color.lightGreen)
+            NavigationLink(destination: HomePage()) {
+                Image(systemName: "house.fill")
+                    .font(.title)
+                    .foregroundColor(Color.lightGreen)
+            }
             Spacer()
             Image(systemName: "bubble.left.fill")
                 .font(.title)
             Spacer()
-            Image(systemName: "person.fill")
-                .font(.title)
+            NavigationLink(destination: ProfilePage()) {
+                Image(systemName: "person.fill")
+                    .font(.title)
+                
+                
+            }
             Spacer()
+            
         }
+        
         .padding(.top, 20)
         .background(Color.darkGreen)
         .foregroundColor(Color.background)
+        #if os(iOS)
+        .navigationBarHidden(true)
+        #endif
 
     }
 }

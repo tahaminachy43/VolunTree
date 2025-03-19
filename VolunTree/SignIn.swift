@@ -41,11 +41,11 @@ struct SignIn: View {
                         Text("Welcome Back")
                             .font(.largeTitle)
                             .fontWeight(.bold)
-                            .foregroundColor(Color.darkColor)
+                            .foregroundColor(Color.darkGreen)
                                                 
                         Text("Login to your account")
                             .font(.subheadline)
-                            .foregroundColor(Color.darkColor)
+                            .foregroundColor(Color.darkGreen)
 
                         TextField("Full Name", text: $fullName)
                             .padding()
@@ -81,7 +81,7 @@ struct SignIn: View {
                                 .foregroundColor(.white)
                                 .frame(maxWidth: .infinity)
                                 .padding()
-                                .background(Color.darkColor)
+                                .background(Color.darkGreen)
                                 .cornerRadius(10)
                         }
                         .padding(.horizontal)
@@ -93,7 +93,7 @@ struct SignIn: View {
                                 .foregroundColor(.gray)
                             NavigationLink(destination: Register()) {
                                 Text("Sign up")
-                                    .foregroundColor(Color.darkColor)
+                                    .foregroundColor(Color.darkGreen)
                                     .fontWeight(.bold)
                             }
                         }
@@ -104,7 +104,7 @@ struct SignIn: View {
                     .shadow(radius: 5)
                     .padding()
                 }
-                .background(Color(Color.lightGray))
+                .background(Color.lightGray)
                 .edgesIgnoringSafeArea(.all)
             }
             .navigationTitle("Sign In")
