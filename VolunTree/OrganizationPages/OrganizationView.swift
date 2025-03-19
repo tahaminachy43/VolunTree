@@ -10,7 +10,7 @@
 import SwiftUI
 
 struct OrganizationView: View {
-    @State private var pageNum: Double = 1  // later change this to 3 (default start page)
+    @State private var pageNum: Double = 3
 
     var body: some View {
         ZStack {
@@ -22,6 +22,12 @@ struct OrganizationView: View {
                     VolunteerRequests()
                 } else if pageNum == 2 {
                     CurrentVolunteers()
+                }else if pageNum == 3{
+                    Profile()
+                }else if pageNum == 4{
+                    VolunteeringApplications()
+                }else if pageNum == 5{
+                    RecommendationRequests()
                 }
                 
                 OrgNavBar(pageNum: pageNum, onIconTap: { newPage in pageNum = newPage})
@@ -29,7 +35,6 @@ struct OrganizationView: View {
         }
     }
 }
-
 
 #Preview {
     OrganizationView()

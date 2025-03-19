@@ -1,13 +1,13 @@
 //
-//  VolunteerRequests.swift
+//  VolunteeringApplications.swift
 //  VolunTree
 //
-//  Created by Khushi Choksi on 2025-03-18.
+//  Created by Savitur Maharaj  on 2025-03-18.
 //
 
 import SwiftUI
 
-struct VolunteerRequests: View {
+struct VolunteeringApplications: View {
     var body: some View {
         NavigationView {
             ZStack {
@@ -15,19 +15,17 @@ struct VolunteerRequests: View {
                     .ignoresSafeArea()
                 
                 VStack (spacing: 30){
-                    Text("Volunteer Requests")
+                    Text("Volunteering Applications")
                         .font(.largeTitle)
                         .bold()
                         .padding()
                         .foregroundStyle(Color.darkGreen)
                     
                     Spacer()
-                    
                 }
                 .frame(maxHeight: .infinity, alignment: .top)
             }
         }
-       
     }
 }
 

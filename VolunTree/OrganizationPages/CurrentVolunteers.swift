@@ -30,5 +30,5 @@ struct CurrentVolunteers: View {
 }
 
 #Preview {
-    CurrentVolunteers()
+    OrganizationView()
 }
