@@ -67,7 +67,6 @@ struct VolunteerRequests: View {
                         
                     }
 
-                                
                 }
                 .frame(maxHeight: .infinity, alignment: .top)
                 

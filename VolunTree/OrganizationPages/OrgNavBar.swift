@@ -31,14 +31,23 @@ struct OrgNavBar: View {
             Image(systemName: "person.fill")
                 .font(.system(size: 35))
                 .foregroundColor(pageNum == 3 ? Color.lightGreen : Color.background)
+                .onTapGesture {
+                    onIconTap(3)
+                }
             Spacer()
             Image(systemName: "star.circle.fill")
                 .font(.system(size: 35))
                 .foregroundColor(pageNum == 4 ? Color.lightGreen : Color.background)
+                .onTapGesture {
+                    onIconTap(4)
+                }
             Spacer()
             Image(systemName: "envelope.fill")
                 .font(.system(size: 35))
                 .foregroundColor(pageNum == 5 ? Color.lightGreen : Color.background)
+                .onTapGesture {
+                    onIconTap(5)
+                }
             Spacer()
         }
         .padding(.top, 20)
