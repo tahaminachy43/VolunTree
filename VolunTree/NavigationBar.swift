@@ -24,6 +24,7 @@ struct NavigationBar: View {
                     .font(.title)
                     .foregroundColor(Color.lightGreen)
             }
+            .navigationBarBackButtonHidden(true)
             Spacer()
             Image(systemName: "bubble.left.fill")
                 .font(.title)
@@ -34,6 +35,7 @@ struct NavigationBar: View {
                 
                 
             }
+            .navigationBarBackButtonHidden(true)
             Spacer()
             
         }

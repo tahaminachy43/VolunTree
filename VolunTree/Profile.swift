@@ -102,6 +102,7 @@ struct ProfilePage: View {
             .background(Color.lightGray)
             .edgesIgnoringSafeArea(.top)
         }
+        .navigationBarBackButtonHidden(true)
     }
 }
 

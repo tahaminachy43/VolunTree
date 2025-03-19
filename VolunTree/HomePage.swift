@@ -69,6 +69,7 @@ struct HomePage: View {
                 .frame(maxHeight: .infinity, alignment: .top)
             }
         }
+        .navigationBarBackButtonHidden(true)
        
     }
 }
