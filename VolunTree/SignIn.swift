@@ -1,23 +1,18 @@
-//
-//  SignIn.swift
-//  VolunTree
-//
-//  Created by Tahamina Mostafa chowdhury on 2025-03-03.
-//
-
-
-// Have to create a Forgot password page for this
-// have to add functionality to login when login button is clicked and it should direct it to homepage.
 import SwiftUI
+import FirebaseAuth
 
 struct SignIn: View {
-    @State private var fullName: String = ""
+    @State private var email: String = ""
     @State private var password: String = ""
-
+    @State private var isLoading = false
+    @State private var errorMessage: String?
+    @State private var navigateToSearch = false
+    
     var body: some View {
         NavigationView {
             GeometryReader { geometry in
                 VStack(spacing: 0) {
+                    // Header with background image
                     ZStack {
                         Image("background")
                             .resizable()
@@ -28,15 +23,14 @@ struct SignIn: View {
                         VStack {
                             Text("VolunTree")
                                 .font(.custom("Pacifico", size: 47))
-                                .font(.largeTitle)
                                 .fontWeight(.bold)
                                 .foregroundColor(.white)
                         }
                     }
 
+                    // Login form
                     VStack(spacing: 20) {
-                        Spacer()
-                            .frame(height: 20)
+                        Spacer().frame(height: 20)
                         
                         Text("Welcome Back")
                             .font(.largeTitle)
@@ -47,47 +41,52 @@ struct SignIn: View {
                             .font(.subheadline)
                             .foregroundColor(Color.darkGreen)
 
-                        TextField("Full Name", text: $fullName)
+                        // Email field
+                        TextField("Email", text: $email)
                             .padding()
                             .background(Color.lightGray)
                             .cornerRadius(10)
                             .padding(.horizontal)
+                            .autocapitalization(.none)
+                            .keyboardType(.emailAddress)
 
+                        // Password field
                         SecureField("Password", text: $password)
                             .padding()
                             .background(Color.lightGray)
                             .cornerRadius(10)
                             .padding(.horizontal)
 
-                        HStack {
-                            Spacer()
-                            NavigationLink(destination: ForgotPassword()) {
-                                Text("Forgot Password?")
-                                    .font(.subheadline)
-                                    .foregroundColor(Color.darkColor)
+                        Spacer().frame(height: 20)
+
+                        // Error message
+                        if let errorMessage = errorMessage {
+                            Text(errorMessage)
+                                .foregroundColor(.red)
+                                .padding(.horizontal)
+                        }
+
+                        // Login button
+                        Button(action: signInUser) {
+                            if isLoading {
+                                ProgressView()
+                                    .tint(.white)
+                            } else {
+                                Text("Login")
+                                    .font(.headline)
+                                    .foregroundColor(.white)
+                                    .frame(maxWidth: .infinity)
+                                    .padding()
+                                    .background(Color.darkGreen)
+                                    .cornerRadius(10)
                             }
                         }
-                        .padding(.horizontal)
-
-                        Spacer()
-                            .frame(height: 20)
-
-                        Button(action: {
-                            print("Login tapped")
-//                            LOGIN FUNCTIONALITY AND NAVIGATION REQUIRED
-                        }) {
-                            Text("Login")
-                                .font(.headline)
-                                .foregroundColor(.white)
-                                .frame(maxWidth: .infinity)
-                                .padding()
-                                .background(Color.darkGreen)
-                                .cornerRadius(10)
-                        }
+                        .disabled(isLoading)
                         .padding(.horizontal)
 
                         Spacer()
 
+                        // Sign up link
                         HStack {
                             Text("Don't Have Account?")
                                 .foregroundColor(.gray)
@@ -103,30 +102,39 @@ struct SignIn: View {
                     .cornerRadius(20)
                     .shadow(radius: 5)
                     .padding()
+                    
+                    // Hidden navigation link
+                    NavigationLink(destination: SearchPage(), isActive: $navigateToSearch) {
+                        EmptyView()
+                    }
+                    .hidden()
                 }
                 .background(Color.lightGray)
                 .edgesIgnoringSafeArea(.all)
             }
-            .navigationTitle("Sign In")
-            #if os(iOS)
             .navigationBarHidden(true)
-            #endif
         }
     }
-}
-
-struct ForgotPassword: View {
-    var body: some View {
-        VStack {
-            Text("Forgot Password Page")
-                .font(.largeTitle)
-                .padding()
-            Spacer()
+    
+    private func signInUser() {
+        guard !email.isEmpty, !password.isEmpty else {
+            errorMessage = "Please enter both email and password"
+            return
         }
-        .navigationTitle("Forgot Password")
-        #if os(iOS)
-        .navigationBarHidden(true)
-        #endif
+        
+        isLoading = true
+        errorMessage = nil
+        
+        Auth.auth().signIn(withEmail: email, password: password) { result, error in
+            isLoading = false
+            
+            if let error = error {
+                errorMessage = "Login failed. Please check your credentials and try again."
+                print("Login error: \(error.localizedDescription)")
+            } else {
+                navigateToSearch = true
+            }
+        }
     }
 }
 
