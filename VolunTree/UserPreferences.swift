@@ -158,17 +158,26 @@ struct UserPreferences: View {
         isLoading = true
         let db = Firestore.firestore()
         let preferencesArray = Array(typesChosen)
-
+        
+        // Reference to the specific user document
+        let userRef = db.collection("Users").document(userId)
+        
+    
+        let updateData: [String: Any] = [
+              "typePreferences": preferencesArray,
+              "hoursGoal": hoursGoal
+          ]
+        
         db.collection("Users").document(userId).updateData([
-            "typePreferences": typesChosen,
-            "hoursGoal": goalHours
+            "typePreferences": preferencesArray,
+            "hoursGoal": hoursGoal
         ]) { error in
             isLoading = false
-
+            
             if let error = error {
                 errorMessage = "Failed to save preferences: \(error.localizedDescription)"
             } else {
-                signInUser()
+                self.signInUser()
             }
         }
     }
