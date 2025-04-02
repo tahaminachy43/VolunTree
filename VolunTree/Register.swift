@@ -15,9 +15,10 @@ struct Register: View {
     @State private var password: String = ""
     @State private var confirmPassword: String = ""
     @State private var errorMessage: String?
-    @State private var isLoading = false        // Occurs when the user has clicked registered briefly
-    @State private var isRegistered = false     // User is initially not registered
-    @State private var navigateToSignIn = false // We don't navigate to the sign in page initially
+    @State private var isLoading = false                // Occurs when the user has clicked registered briefly
+    @State private var isRegistered = false             // User is initially not registered
+    @State private var navigateToPreferences = false    // We don't navigate to the sign in page initially
+    @State private var userId = ""                      // userId is used to navigate to the preferences page
     
     var body: some View {
         NavigationStack {
@@ -124,7 +125,7 @@ struct Register: View {
                         .shadow(radius: 10)
                         .padding(.horizontal)
                         
-                        NavigationLink("", destination: SignIn(), isActive: $navigateToSignIn)
+                        NavigationLink("", destination: UserPreferences(userId: userId, userEmail: email, userPassword: password), isActive: $navigateToPreferences)
                             .hidden()
                     }
                 }
@@ -171,7 +172,8 @@ struct Register: View {
                         errorMessage = "Failed to save user: \(error.localizedDescription)"
                     } else {
                         isRegistered = true
-                        navigateToSignIn = true  // Navigate to sign in page once user has successfully registered
+                        userId = user.uid
+                        navigateToPreferences = true  // Navigate to preferences view once user has successfully registered
                     }
                 }
             }
