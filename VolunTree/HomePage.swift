@@ -62,8 +62,8 @@ struct HomePage: View {
                         .italic()
                     
                     Spacer()
-                    NavigationBar()
-                        .frame(maxWidth: .infinity)
+                    //NavigationBar()
+                        //.frame(maxWidth: .infinity)
             
                 }
                 .frame(maxHeight: .infinity, alignment: .top)

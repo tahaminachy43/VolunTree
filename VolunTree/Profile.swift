@@ -96,8 +96,8 @@ struct ProfilePage: View {
 
                 Spacer()
 
-                NavigationBar()
-                    .frame(maxWidth: .infinity)
+                //NavigationBar()
+                   // .frame(maxWidth: .infinity)
             }
             .background(Color.lightGray)
             .edgesIgnoringSafeArea(.top)

@@ -79,8 +79,8 @@ struct SearchPage: View {
         }
         .background(Color.lightGray)
         .edgesIgnoringSafeArea(.bottom)
-        NavigationBar()
-            .frame(maxWidth: .infinity)
+        //NavigationBar()
+            //.frame(maxWidth: .infinity)
     }
 }
 

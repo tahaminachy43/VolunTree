@@ -96,8 +96,8 @@ struct ChallengesPage: View {
             
             
         }
-        NavigationBar()
-            .frame(maxWidth: .infinity)
+        //NavigationBar()
+           // .frame(maxWidth: .infinity)
         
     }
 }
