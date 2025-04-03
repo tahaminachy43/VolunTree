@@ -104,7 +104,7 @@ struct SignIn: View {
                     .padding()
                     
                     // Hidden navigation link
-                    NavigationLink(destination: SearchPage(), isActive: $navigateToSearch) {
+                    NavigationLink(destination: VolunteerView(), isActive: $navigateToSearch) {
                         EmptyView()
                     }
                     .hidden()

@@ -114,7 +114,7 @@ struct UserPreferences: View {
                     .disabled(isLoading)
                     .padding()
                     
-                    NavigationLink("", destination: SearchPage(), isActive: $navigateToSearch)
+                    NavigationLink("", destination: VolunteerView(), isActive: $navigateToSearch)
                         .hidden()
                     
                 }
