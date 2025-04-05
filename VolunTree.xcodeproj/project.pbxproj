@@ -59,7 +59,7 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		688977DA2D9DE83600E5E678 /* Exceptions for "VolunTree" folder in "VolunTree" target */ = {
+		684E47AC2DA0A0BF00A7D475 /* Exceptions for "VolunTree" folder in "VolunTree" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				Info.plist,
@@ -72,7 +72,7 @@
 		4955D6BC2D76944D00E1B619 /* VolunTree */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
-				688977DA2D9DE83600E5E678 /* Exceptions for "VolunTree" folder in "VolunTree" target */,
+				684E47AC2DA0A0BF00A7D475 /* Exceptions for "VolunTree" folder in "VolunTree" target */,
 			);
 			path = VolunTree;
 			sourceTree = "<group>";
@@ -499,6 +499,8 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = VolunTree/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -539,6 +541,8 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = VolunTree/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;

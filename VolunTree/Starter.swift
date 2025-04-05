@@ -5,6 +5,7 @@
 //  Created by Tahamina Mostafa chowdhury on 2025-03-03.
 //
 import SwiftUI
+import UIKit
 
 struct Starter: View {
     @State private var isAnimating = false
@@ -22,7 +23,7 @@ struct Starter: View {
                     .edgesIgnoringSafeArea(.all)
 
                 Text("VolunTree")
-                    .font(.custom("Pacifico", size: 40))
+                    .font(Font.custom("Pacifico", size: 40))
                     .foregroundColor(.white)
                     .scaleEffect(isAnimating ? 1.2 : 1.0)
                     .animation(.easeInOut(duration: 2), value: isAnimating)
