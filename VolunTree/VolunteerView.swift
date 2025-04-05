@@ -30,8 +30,11 @@ struct VolunteerView: View {
                 }
                 
                 NavigationBar(pageNum: pageNum, onIconTap: { newPage in pageNum = newPage})
+
             }
         }
+        .navigationBarBackButtonHidden()
+        .toolbar(.hidden)
     }
 }
 

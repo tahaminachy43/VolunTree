@@ -98,9 +98,7 @@ struct ChallengesPage: View {
             
             
         }
-        //NavigationBar()
-           // .frame(maxWidth: .infinity)
-        
+        .navigationBarBackButtonHidden(true)        
     }
 }
 
