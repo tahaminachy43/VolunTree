@@ -54,6 +54,7 @@ struct NewChallengesView: View {
                 }
             }
             .padding(.top, 20)
+            .background(Color.background)
         }
     }
 }

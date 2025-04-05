@@ -6,40 +6,83 @@
 //
 
 import SwiftUI
+import MapKit
+import CoreLocation
+
+// https://www.youtube.com/watch?v=LwU-4LMh9Qs
 
 struct SearchPage: View {
+    @State private var region = MapCameraPosition.region(
+            MKCoordinateRegion(
+                center: CLLocationCoordinate2D(latitude: 51.0447, longitude: -114.0719), // Calgary
+                span: MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
+            )
+        )
+    
+    let uni = CLLocationCoordinate2D(latitude: 51.0781, longitude: -114.1301)
+    let mustard_seed = CLLocationCoordinate2D(latitude: 51.049999, longitude: -114.066666)
+    
     var body: some View {
         VStack(spacing: 0) {
 
-            Text("VolunTree")
-                .font(.custom("Pacifico", size: 40))
-                .font(.largeTitle)
-                .foregroundStyle(Color.darkGreen)
-                
-                .padding(.top, 20)
-                .padding(.bottom, 10)
+//            Text("VolunTree")
+//                .font(.custom("Pacifico", size: 40))
+//                .font(.largeTitle)
+//                .foregroundStyle(Color.darkGreen)
+//                
+//                .padding(.top, 20)
+//                .padding(.bottom, 10)
+            
+            // Title
+            VStack (alignment: .leading) {
+                Text("Opportunities")
+                    //.font(.title)
+                    .font(Font.custom("DM Serif Display Regular", size: 35))
+                    .foregroundStyle(Color.darkGreen)
+                    .fontWeight(.bold)
+                    .padding(.top, 5)
+            }
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .padding(.leading, 20)
+            
+            
+            // Search feature
             HStack {
                 Image(systemName: "magnifyingglass")
-                    .foregroundColor(.white)
+                    .foregroundColor(.gray)
                 TextField("Search for opportunities...", text: .constant(""))
                     .font(.subheadline)
-                    .foregroundStyle(Color.white)
-                
+                    .foregroundStyle(Color.darkGreen)
             }
-            .padding()
-            .background(Color.lightGreen)
-            .cornerRadius(10)
+            .padding(5)
+            .background(Color.white)
+            .cornerRadius(30)
+            .overlay(
+                RoundedRectangle(cornerRadius: 30)
+                    .stroke(Color.gray, lineWidth: 1)
+            )
             .padding(.horizontal, 20)
-            .padding(.top, 20)
+            .padding(.top, 15)
 
-            // Map Section (Placeholder)
-            Image("map") // we have to useMapKit to embed maspw we want
-                .resizable()
-                .scaledToFill()
-                .frame(height: 200)
-                .clipped()
-                .padding(.top, 20)
 
+            // Map section
+            Map(position: $region) {
+                Marker("University of Calgary", coordinate: uni)
+                Marker("Mustard Seed", coordinate: mustard_seed)
+            }
+            .mapControls {
+                MapUserLocationButton()
+                MapCompass()
+            }
+                .cornerRadius(15)
+                .overlay(
+                    RoundedRectangle(cornerRadius: 15)
+                        .stroke(Color.darkGreen, lineWidth: 1)
+                )
+                .padding(20)
+            
+            
+            // Opportunities
             ScrollView {
                 VStack(spacing: 20) {
                     ForEach(0..<10) { index in
@@ -74,13 +117,12 @@ struct SearchPage: View {
                         .padding(.horizontal, 20)
                     }
                 }
-                .padding(.top, 20)
+                .padding(.top, 5)
             }
         }
-        .background(Color.lightGray)
+        .background(Color.background)
         .edgesIgnoringSafeArea(.bottom)
-        //NavigationBar()
-            //.frame(maxWidth: .infinity)
+
     }
 }
 
