@@ -77,15 +77,15 @@ struct Starter: View {
                 withAnimation(.easeInOut(duration: 2)) {
                     isAnimating = true
                 }
-                DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                     withAnimation(.easeInOut(duration: 1)) {
                         showSignIn = true
                     }
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.67) {
                         withAnimation(.easeInOut(duration: 1)) {
                             showRegister = true
                         }
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.125) {
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.34) {
                             withAnimation(.easeInOut(duration: 1)) {
                                 showOrgSignIn = true
                             }

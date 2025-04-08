@@ -26,6 +26,8 @@ struct OrganizationProfile: View {
     
     @State private var opportunities: [String] = []
     
+    @State private var fetchedOrgId: String = "" // For passing to the AddOpportunityView
+    
     var body: some View {
         NavigationView {
             ZStack {
@@ -111,7 +113,7 @@ struct OrganizationProfile: View {
                             Text("Volunteering Opportunities")
                                 .font(.title2)
                                 .bold()
-                            NavigationLink(destination: AddOpportunity()) {
+                            NavigationLink(destination: AddOpportunity(orgId: fetchedOrgId)) {
                                 Image(systemName: "plus.circle")
                                     .font(.title)
                                     .foregroundColor(Color.darkGreen)
@@ -197,6 +199,8 @@ struct OrganizationProfile: View {
             return
         }
 
+        fetchedOrgId = orgId
+        
         let db = Firestore.firestore()
         let orgRef = db.collection("Organization").document(orgId)
 
