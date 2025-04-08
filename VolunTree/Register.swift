@@ -129,6 +129,7 @@ struct Register: View {
                             .hidden()
                     }
                 }
+                .navigationBarBackButtonHidden(true)
             }
         }
     }

@@ -7,8 +7,13 @@
 
 import SwiftUI
 import UIKit
+import Firebase
+import FirebaseAuth
+import FirebaseStorage
 
 struct OrganizationProfile: View {
+    @State private var orgName: String = "Organization Name"
+    
 //  Pfp variables
     @State private var pfp: Image? = Image(systemName: "person.crop.circle")
     @State private var isImagePickerDisplayed: Bool = false
@@ -29,7 +34,7 @@ struct OrganizationProfile: View {
                 
                 VStack (spacing: 30){
 //                  Page Title
-                    Text("Organization Name")
+                    Text(orgName)
                         .font(.largeTitle)
                         .bold()
                         .padding()
@@ -139,25 +144,99 @@ struct OrganizationProfile: View {
             }
 //          When the view is initially loaded, call api to get pfp, description and opportunities
             .onAppear{
+                fetchNameAndDescription()
                 fetchPfp()
-                fetchDescription()
                 fetchOpportunities()
             }
         }
     }
     
 //  API calls
-    func fetchPfp(){
-        
+    func fetchPfp() {
+        guard let orgId = Auth.auth().currentUser?.uid else {
+            print("No org is currently logged in.")
+            return
+        }
+
+        let db = Firestore.firestore()
+        let orgRef = db.collection("Organization").document(orgId)
+
+        orgRef.getDocument { document, error in
+            if let error = error {
+                print("Error fetching org profile picture URL: \(error.localizedDescription)")
+            } else if let document = document, document.exists {
+                // Fetch the pfpURL from the Firestore document
+                if let pfpURLString = document.get("pfpURL") as? String, !pfpURLString.isEmpty {
+                    if let url = URL(string: pfpURLString) {
+                        // Fetch the image from the URL
+                        URLSession.shared.dataTask(with: url) { data, response, error in
+                            if let error = error {
+                                print("Error fetching profile picture: \(error.localizedDescription)")
+                            } else if let data = data, let uiImage = UIImage(data: data) {
+                                // Update the profile picture state on the main thread
+                                DispatchQueue.main.async {
+                                    pfp = Image(uiImage: uiImage)
+                                }
+                            }
+                        }.resume()
+                    }
+                } else {
+                    print("No pfpURL found for org.")
+                }
+            } else {
+                print("Org document does not exist.")
+            }
+        }
     }
+
+
+
+    func fetchNameAndDescription() {
+        guard let orgId = Auth.auth().currentUser?.uid else {
+            print("No org is currently logged in")
+            return
+        }
+
+        let db = Firestore.firestore()
+        let orgRef = db.collection("Organization").document(orgId)
+
+        orgRef.getDocument { document, error in
+            if let error = error {
+                print("Error fetching name or description: \(error.localizedDescription)")
+            } else if let document = document, document.exists {
+                orgName = document.get("name") as? String ?? "No name available."
+                description = document.get("description") as? String ?? "No description available."
+            }
+        }
+    }
+
     
-    func fetchDescription(){
+    func fetchOpportunities() {
+        guard let orgId = Auth.auth().currentUser?.uid else {
+            print("No org is currently logged in.")
+            return
+        }
+
+        let db = Firestore.firestore()
+        let opportunitiesRef = db.collection("VolunteeringOpportunity")
         
+        opportunitiesRef.whereField("orgId", isEqualTo: orgId).getDocuments { querySnapshot, error in
+            if let error = error {
+                print("Error fetching opportunities: \(error.localizedDescription)")
+            } else {
+                // Remove items from current list:
+                opportunities.removeAll()
+                
+                for document in querySnapshot!.documents {
+                    // Extract 'name' from each opportunity document
+                    if let opportunityName = document.get("name") as? String {
+                        opportunities.append(opportunityName)
+                    }
+                }
+            }
+        }
     }
-    
-    func fetchOpportunities(){
-        opportunities = ["Hospice Care", "City cleanup", "Origami at the Children's Hospital"]
-    }
+
     
     func updatePfpAPI(image: UIImage){
         
@@ -166,10 +245,6 @@ struct OrganizationProfile: View {
     func updateDescriptionAPI(description: String){
 
     }
-}
-
-#Preview {
-    OrganizationView()
 }
 
 // Image Picker using UIKit (Wrapped for SwiftUI)
@@ -215,4 +290,8 @@ struct ImagePickerController: UIViewControllerRepresentable {
             picker.dismiss(animated: true, completion: nil)
         }
     }
+}
+
+#Preview {
+    Starter()
 }
