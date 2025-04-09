@@ -15,7 +15,6 @@ struct OrganizationView: View {
     var body: some View {
         ZStack {
             Color(Color.darkGreen)
-            
             VStack {
                 if pageNum == 1 {
                     VolunteerRequests()

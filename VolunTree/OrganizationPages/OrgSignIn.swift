@@ -1,12 +1,12 @@
 import SwiftUI
 import FirebaseAuth
 
-struct SignIn: View {
+struct OrgSignIn: View {
     @State private var email: String = ""
     @State private var password: String = ""
     @State private var isLoading = false
     @State private var errorMessage: String?
-    @State private var navigateToSearch = false
+    @State private var navigatetoOrgProfile = false
 
     var body: some View {
         GeometryReader { geometry in
@@ -36,7 +36,7 @@ struct SignIn: View {
                         .fontWeight(.bold)
                         .foregroundColor(Color.darkGreen)
 
-                    Text("Login to your account")
+                    Text("Login to your organization's account")
                         .font(.subheadline)
                         .foregroundColor(Color.darkGreen)
 
@@ -85,17 +85,19 @@ struct SignIn: View {
 
                     Spacer()
 
-                    // Sign up link
+                    // Organizations manually sign up with us
+                    // Starter
                     HStack {
-                        Text("Don't Have Account?")
+                        Text("Are you a user?")
                             .foregroundColor(.gray)
-                        NavigationLink(destination: Register()) {
-                            Text("Sign up")
+                        NavigationLink(destination: Starter()) {
+                            Text("Home Screen")
                                 .foregroundColor(Color.darkGreen)
                                 .fontWeight(.bold)
                         }
                     }
                     .padding(.bottom, 20)
+
                 }
                 .background(Color.white)
                 .cornerRadius(20)
@@ -103,7 +105,7 @@ struct SignIn: View {
                 .padding()
 
                 // Hidden navigation link
-                NavigationLink(destination: VolunteerView(), isActive: $navigateToSearch) {
+                NavigationLink(destination: OrganizationView(), isActive: $navigatetoOrgProfile) {
                     EmptyView()
                 }
                 .hidden()
@@ -130,7 +132,7 @@ struct SignIn: View {
                 errorMessage = "Login failed. Please check your credentials and try again."
                 print("Login error: \(error.localizedDescription)")
             } else {
-                navigateToSearch = true
+                navigatetoOrgProfile = true
             }
         }
     }
@@ -138,6 +140,6 @@ struct SignIn: View {
 
 #Preview {
     NavigationStack {
-        SignIn()
+        OrgSignIn()
     }
 }
