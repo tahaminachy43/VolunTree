@@ -61,8 +61,8 @@ struct Starter: View {
                         Button(action: {
                             navigateToOrgSignIn = true //
                         }) {
-                            Text("Organization Sign In")
-                                .font(.system(size: 20, weight: .bold))
+                            Text("Are you an organization?")
+                                .font(.system(size: 16, weight: .bold))
                                 .foregroundColor(.white)
                                 .opacity(showOrgSignIn ? 1 : 0)
                                 .animation(.easeInOut(duration: 1), value: showOrgSignIn)

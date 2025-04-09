@@ -24,7 +24,7 @@ struct VolunteerView: View {
                 } else if pageNum == 3 {
                     HomePage()
                 } else if pageNum == 4 {
-                    //HomePage() // change to chat page later
+                    Chat()
                 } else if pageNum == 5 {
                     ProfilePage()
                 }
