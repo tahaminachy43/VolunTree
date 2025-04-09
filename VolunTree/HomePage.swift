@@ -48,8 +48,8 @@ struct HomePage: View {
                             .font(.subheadline)
                             .foregroundStyle(Color.darkGreen)
                         
-                        ScrollView(.horizontal) {
-                            LazyHGrid(rows: [GridItem(.fixed(100)), GridItem(.fixed(100))], spacing: 15) {
+                        ScrollView(.horizontal, showsIndicators: true) {
+                            HStack(spacing: 15) {
                                 ForEach(opportunities) { opp in
                                     NavigationLink(destination: ViewOpportunity(opportunity: opp)) {
                                         OpportunityCard(opportunity: opp)
@@ -120,7 +120,7 @@ struct HomePage: View {
                     name: data["name"] as? String ?? "",
                     description: data["description"] as? String ?? "",
                     address: data["address"] as? String ?? "",
-                    volunteeringTypes: data["volunteeringTypes"] as? [String] ?? [],
+                    volunteeringTypes: data["volunteeringTypes"] as? [String] ?? []
                 )
             }
         }
