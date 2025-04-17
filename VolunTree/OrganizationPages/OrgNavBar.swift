@@ -50,7 +50,7 @@ struct OrgNavBar: View {
                 }
             Spacer()
         }
-        .padding(.top, 20)
+        .padding(.top, 15)
         .background(Color.darkGreen)
         .foregroundColor(Color.background)
     }

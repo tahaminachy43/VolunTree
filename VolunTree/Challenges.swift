@@ -17,13 +17,14 @@ struct ChallengesPage: View {
                         Image("background")
                             .resizable()
                             .scaledToFill()
-                            .frame(height: geometry.size.height / 4)
+                            .frame(height: geometry.size.height / 5.5)
                             .clipped()
 
                         VStack(alignment: .leading, spacing: 10) {
                             Text("Challenges")
-                                .font(.largeTitle)
-                                .fontWeight(.bold)
+                                //.font(.largeTitle)
+                                .font(Font.custom("DM Serif Display Regular", size: 35))
+                                //.fontWeight(.bold)
                                 .foregroundColor(.white)
                             Text("To reach beyond")
                                 .font(.title2)
@@ -31,7 +32,7 @@ struct ChallengesPage: View {
                         }
                         .padding(.leading, 20)
                         .padding(.bottom, 20)
-                        .padding(.top,20)
+                        .padding(.top, 40)
                     }
 
                     VStack(spacing: 20) {
@@ -75,6 +76,7 @@ struct ChallengesPage: View {
                         }
                         .padding(.horizontal, 20)
                         .padding(.top, 20)
+                        .background(Color.background)
 
                         ScrollView {
                             switch selectedTab {
@@ -89,16 +91,14 @@ struct ChallengesPage: View {
                             }
                         }
                     }
-                    .background(Color.lightGray)
+                    .background(Color.background)
                 }
             }
             .edgesIgnoringSafeArea(.top)
             
             
         }
-        NavigationBar()
-            .frame(maxWidth: .infinity)
-        
+        .navigationBarBackButtonHidden(true)        
     }
 }
 

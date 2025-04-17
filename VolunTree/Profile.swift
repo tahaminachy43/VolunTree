@@ -96,10 +96,10 @@ struct ProfilePage: View {
 
                 Spacer()
 
-                NavigationBar()
-                    .frame(maxWidth: .infinity)
+                //NavigationBar()
+                   // .frame(maxWidth: .infinity)
             }
-            .background(Color.lightGray)
+            .background(Color.background)
             .edgesIgnoringSafeArea(.top)
         }
         .navigationBarBackButtonHidden(true)
