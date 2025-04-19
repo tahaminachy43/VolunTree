@@ -27,6 +27,7 @@ struct OrganizationProfile: View {
     @State private var opportunities: [String] = []
     
     @State private var fetchedOrgId: String = "" // For passing to the AddOpportunityView
+    @State private var isLoggedOut: Bool = false // For navigating to Starter when org logs out
     
     var body: some View {
         NavigationView {
@@ -67,10 +68,33 @@ struct OrganizationProfile: View {
 //                              Send new image to API
                                 updatePfpAPI(image: selectedImg)
                             }
-                            
+                        }
+                        
+//                      Logout and go to the Starter View
+                        Button(action: {
+                            do {
+                                try Auth.auth().signOut()
+                                isLoggedOut = true
+                            } catch {
+                                print("Error signing out: \(error.localizedDescription)")
+                            }
+                        }) {
+                            Text("Logout")
+                                .font(.footnote)
+                                .fontWeight(.bold)
+                                .foregroundColor(.darkGreen)
+                                .padding(.horizontal, 24)
+                                .padding(.vertical, 10)
+                                .background(Color.lightGreen)
+                                .cornerRadius(10)
+                        }
+                        .padding(.top, 8)
+
+                        
+                        NavigationLink(destination: Starter(), isActive: $isLoggedOut){
+                                EmptyView()
                         }
                     }
-                    
                     
 //                  Description
                     VStack{
@@ -151,6 +175,8 @@ struct OrganizationProfile: View {
                 fetchOpportunities()
             }
         }
+        .navigationBarBackButtonHidden(true)
+        .navigationBarHidden(true)
     }
     
 //  API calls
