@@ -157,7 +157,6 @@ struct ApplicationPage: View {
 
             guard let data = snapshot?.data() else { return }
 
-            // Fetch supplementary message and current status
             supplementaryMessage = data["supplementaryMessage"] as? String ?? ""
             currentStatus = data["status"] as? String ?? "pending"
         }
@@ -168,10 +167,8 @@ struct ApplicationPage: View {
         let db = Firestore.firestore()
         let applicationRef = db.collection("ApplicationsToJoinVolOpp").document(applicationId)
 
-        // Update the status field and store the supplementary message
         applicationRef.updateData([
-            "status": status,
-            "supplementaryMessage": supplementaryMessage
+            "status": status
         ]) { error in
             if let error = error {
                 print("Error updating status: \(error.localizedDescription)")
