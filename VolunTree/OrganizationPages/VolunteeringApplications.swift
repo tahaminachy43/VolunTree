@@ -15,8 +15,8 @@ struct VolunteeringApplications: View {
                     .ignoresSafeArea()
                 
                 VStack (spacing: 30){
-                    Text("Volunteering Applications")
-                        .font(.largeTitle)
+                    Text("Volunteers wanting to complete")
+                        .font(.title3)
                         .bold()
                         .padding()
                         .foregroundStyle(Color.darkGreen)
@@ -26,6 +26,8 @@ struct VolunteeringApplications: View {
                 .frame(maxHeight: .infinity, alignment: .top)
             }
         }
+        .navigationBarBackButtonHidden(true)
+        .navigationBarHidden(true)
     }
 }
 

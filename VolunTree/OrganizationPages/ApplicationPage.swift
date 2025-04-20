@@ -6,36 +6,43 @@
 //
 
 import SwiftUI
+import Firebase
+import FirebaseFirestore
+import FirebaseAuth
 
 struct ApplicationPage: View {
-    @State private var supplementaryMessage: String = ""    // to store message from supplementary message
-    var position: String = "position"
-    var name: String = "Name"
-    
+    @State private var supplementaryMessage: String = ""
+    @State private var currentStatus: String = "pending"
+
+    var position: String
+    var name: String
+    var applicationId: String
+
     var body: some View {
         NavigationView {
             ZStack {
                 Color(Color.background)
                     .ignoresSafeArea()
-                
+
                 VStack {
                     Text("\(name)'s Application")
                         .font(.title)
                         .bold()
                         .padding()
                         .foregroundStyle(Color.darkGreen)
-    
+
                     // user profile picture
                     Image(systemName: "person.crop.circle.fill")
                         .foregroundStyle(Color.darkGreen)
                         .font(.system(size: 80))
                         .padding(.bottom, 30)
-                    
+
                     // view profile button
                     Button(action: {
-                        print("Hello")
+                        print("View profile tapped")
+                        // You can implement the action to view the user's profile
                     }) {
-                        HStack() {
+                        HStack {
                             Image(systemName: "play.fill")
                                 .foregroundColor(Color.darkGreen)
                                 .font(.system(size: 15))
@@ -50,49 +57,50 @@ struct ApplicationPage: View {
                     .background(Color.lightGreen)
                     .cornerRadius(500)
                     .fixedSize()
-                    
-                    
-                    
+
                     // position name
                     HStack {
                         Spacer()
                         Text("Position: \(position)")
                             .frame(maxWidth: .infinity, alignment: .leading)
                             .padding(.leading, 15)
+                            .foregroundColor(Color.darkGreen)
+                            .fontWeight(.bold)
                     }
                     .padding(.top, 20)
-                    
-                    // message to applicant
+
+
+                    // Supplementary message from applicant user
                     HStack {
                         Spacer()
                         Text("Supplementary Message:")
                             .frame(maxWidth: .infinity, alignment: .leading)
                             .padding(.leading, 15)
+                            .foregroundColor(Color.darkGreen)
+                            .fontWeight(.bold)
                     }
                     .padding(.top, 20)
                     
-                    // supplementary message input
-                    HStack {
-                        Spacer()
-                        //TextField("Enter your message here", text: $supplementaryMessage)
-                            
-                        TextEditor(text: $supplementaryMessage)
-                            .padding()
-                            .frame(height: 220)
-                            .background(Color.white)
-                            .cornerRadius(10)
-                            .padding(.horizontal, 15)
-                            .shadow(radius: 5)
-                    }
-                    .padding(.bottom, 20)
-                    
-                    
-                    //Spacer()
-                    
-                    // approve or reject buttons
+                    Text(supplementaryMessage)
+                        .padding()
+                        .frame(height: 220)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .background(Color.white)
+                        .cornerRadius(10)
+                        .padding(.horizontal, 15)
+                        .shadow(radius: 5)
+                        .foregroundColor(.black)
+                        .multilineTextAlignment(.leading)
+                        .lineLimit(nil)                    // Allow text to wrap
+                        .padding(.top, 20)
+
+                    // Spacer to push buttons to the bottom
+                    Spacer()
+
+                    // Approve or Reject buttons
                     HStack {
                         Button(action: {
-                            print("Hello")
+                            updateApplicationStatus(status: "approved")
                         }) {
                             HStack() {
                                 Image(systemName: "checkmark")
@@ -109,9 +117,9 @@ struct ApplicationPage: View {
                         .background(Color.darkGreen)
                         .cornerRadius(5)
                         .fixedSize()
-                        
+
                         Button(action: {
-                            print("Hello")
+                            updateApplicationStatus(status: "rejected")
                         }) {
                             HStack() {
                                 Image(systemName: "x.square")
@@ -127,17 +135,54 @@ struct ApplicationPage: View {
                         .foregroundColor(.white)
                         .background(Color.mediumGreen)
                         .cornerRadius(5)
-    
-                        
                     }
+                    .padding(.bottom, 20)
                 }
                 .frame(maxHeight: .infinity, alignment: .top)
             }
+            .onAppear {
+                fetchApplicationDetails()
+            }
         }
-       
+    }
+
+    // Function to fetch application details, including the supplementary message
+    func fetchApplicationDetails() {
+        let db = Firestore.firestore()
+        db.collection("ApplicationsToJoinVolOpp").document(applicationId).getDocument { snapshot, error in
+            if let error = error {
+                print("Error fetching application details: \(error.localizedDescription)")
+                return
+            }
+
+            guard let data = snapshot?.data() else { return }
+
+            // Fetch supplementary message and current status
+            supplementaryMessage = data["supplementaryMessage"] as? String ?? ""
+            currentStatus = data["status"] as? String ?? "pending"
+        }
+    }
+
+    // Function to update the application status (approve or reject)
+    func updateApplicationStatus(status: String) {
+        let db = Firestore.firestore()
+        let applicationRef = db.collection("ApplicationsToJoinVolOpp").document(applicationId)
+
+        // Update the status field and store the supplementary message
+        applicationRef.updateData([
+            "status": status,
+            "supplementaryMessage": supplementaryMessage
+        ]) { error in
+            if let error = error {
+                print("Error updating status: \(error.localizedDescription)")
+            } else {
+                print("Successfully updated status to \(status)")
+                currentStatus = status
+            }
+        }
     }
 }
 
 #Preview {
-    ApplicationPage()
+    OrganizationView()
 }

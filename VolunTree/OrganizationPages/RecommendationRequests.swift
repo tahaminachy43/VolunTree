@@ -26,6 +26,8 @@ struct RecommendationRequests: View {
                 .frame(maxHeight: .infinity, alignment: .top)
             }
         }
+        .navigationBarBackButtonHidden(true)
+        .navigationBarHidden(true)
     }
 }
 
