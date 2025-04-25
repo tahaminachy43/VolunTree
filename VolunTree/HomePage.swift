@@ -22,7 +22,8 @@ struct VolunteeringOpportunity: Identifiable {
 struct HomePage: View {
     @State private var opportunities: [VolunteeringOpportunity] = []
     @State private var fullName: String = ""
-    
+    @State private var progress: Double = 0.5
+
     var body: some View {
         NavigationView {
             ZStack {
@@ -63,8 +64,9 @@ struct HomePage: View {
                     
                     Spacer()
                     
-                    ProgressCircle(progress: 0.25)
-                        .frame(width: 250, height: 250)
+                    ProgressCircle(progress: progress)
+                        .frame(width: 175, height: 175)
+
                         
                     Spacer()
                     
