@@ -19,6 +19,10 @@ struct VolunteeringOpportunity: Identifiable {
     var volunteeringTypes: [String]
 }
 
+/// The Volunteer's home page. It greets them, shows them oppportunties based on their preferences, and shows their goal progress.
+///
+/// Returns:
+/// - The Volunteer's home page.
 struct HomePage: View {
     @State private var opportunities: [VolunteeringOpportunity] = []
     @State private var fullName: String = ""
@@ -41,13 +45,16 @@ struct HomePage: View {
                     
                     VStack(alignment: .leading, spacing: 16){
                         Text("Hi, \(fullName.isEmpty ? "User" : fullName)!")
+                            .fontWeight(.bold)
                             .font(.title2)
                             .bold()
                             .foregroundStyle(Color.darkGreen)
+                            .tracking(1.2)
                         
-                        Text("Volunteer Opportunities you may like:")
+                        Text("Volunteer opportunities you may like:")
                             .font(.subheadline)
                             .foregroundStyle(Color.darkGreen)
+                            .italic()
                         
                         ScrollView(.horizontal, showsIndicators: true) {
                             HStack(spacing: 15) {

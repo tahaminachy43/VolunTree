@@ -21,14 +21,20 @@ struct ViewOpportunity: View {
                     .bold()
                     .foregroundStyle(Color.darkColor)
                 
-                Text("Description:")
-                    .font(.subheadline)
-                    .foregroundStyle(Color.darkGreen)
+                VStack(alignment: .leading, spacing: 2) {
+                    Text("Description:")
+                        .fontWeight(.bold)
+                        .font(.headline)
+                        .foregroundStyle(Color.darkGreen)
+                    
+                    Text(opportunity.description)
+                        .padding(.bottom, 10)
+                        .foregroundStyle(Color.darkGreen)
+                }
                 
-                Text(opportunity.description)
-                    .padding(.bottom, 10)
                 
                 Text("Address:")
+                    .fontWeight(.bold)
                     .font(.subheadline)
                     .foregroundStyle(Color.darkGreen)
                 
@@ -36,6 +42,7 @@ struct ViewOpportunity: View {
                     .padding(.bottom, 10)
                 
                 Text("Volunteering Types:")
+                    .fontWeight(.bold)
                     .font(.subheadline)
                     .foregroundStyle(Color.darkGreen)
 
@@ -52,6 +59,7 @@ struct ViewOpportunity: View {
                 .padding(.vertical, 10)
                 
                 Text("Supplementary Message:")
+                    .fontWeight(.bold)
                     .font(.subheadline)
                     .foregroundStyle(Color.darkGreen)
                 
@@ -71,6 +79,7 @@ struct ViewOpportunity: View {
                 }
                 .frame(maxWidth: .infinity) // Makes button full width inside VStack
             }
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
             .padding(.horizontal, 30)
             .padding(.top, 20) // Add padding at the top to avoid content being too high
             .background(Color(Color.background)) // Set background color of entire view

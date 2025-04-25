@@ -12,12 +12,19 @@ import SwiftUI
 // https://sarunw.com/posts/swiftui-circular-progress-bar/
 // https://cindori.com/developer/swiftui-animation-rings
 
-// 1.0 is the highest value to fill the circle
+/// An animated progress circle that is filled in based on the input value.
+///
+/// Parameters:
+/// - progress: A Double value in the range 0 to 1. (e.g., 0.5 is equal to 50%).
+///
+/// Returns:
+/// - A single animated progress circle filled in with the input value.
 struct ProgressCircle: View {
     var progress: Double    
-    @State private var drawingStroke = false
+    @State private var drawingStroke = false            // for animation
+    @State private var hasAppeared = false              // to ensure animation occurs once initially
     
-    // animation
+    // animation code
     let animation = Animation
         .easeOut(duration: 3)
         .delay(0.5)
@@ -47,7 +54,10 @@ struct ProgressCircle: View {
             .animation(animation, value: drawingStroke)
             .drawingGroup()                 // keeps the circle in place
             .onAppear {
-                drawingStroke.toggle()
+                if !hasAppeared {
+                    hasAppeared = true
+                    drawingStroke.toggle()      // ensures the animation occurs once only
+                }
             }
             
             // progress percentage
