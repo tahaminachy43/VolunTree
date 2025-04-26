@@ -53,5 +53,13 @@ _If you're reading this and are interested in helping out with this app over Sum
 
 
 
-## Resources
-We made use of Swift documentation, online articles (such as StackOverflow), video tutorials, and artificial intelligence (AI) such as ChatGPT. AI was mainly used to help debug code, help with styling the frontend, and help with Firebase queries in API calls for the backend connection. It was a useful tool (along with the other resources) as we started learning Swift at the beginning of the semester, so it helped us to implement some difficult features, such as animations, effectively. 
+## Appendix A: Resources
+Throughout the application's development, we made use of several resources, including Swift documentation, online articles (such as StackOverflow), video tutorials, and artificial intelligence (AI) tools like ChatGPT.
+
+**Use of AI Tools:**
+- ChatGPT - Assisted primarily in the following areas:
+  - Debugging Code: Helped identify and resolve syntax errors and logic issues.
+  - Styling the Frontend: Assisted with frontend styling, including animations and fixing bugs.
+  - Firebase Queries: Helped with the creation and optimization of Firebase queries for backend API calls.
+
+While AI tools played a role in assisting with technical aspects, all final code and decisions were reviewed and implemented by the team. The AI was used as a supplementary resource for learning and problem-solving (along with the other resources mentioned earlier), which was especially useful as we started learning Swift at the beginning of the semester. It helped us implement more complex features, such as animations, more effectively.
