@@ -1,16 +1,6 @@
-//
-//  Starter.swift
-//  VolunTree
-//
-//  Created by Tahamina Mostafa chowdhury on 2025-03-03.
-
-
-/// This is to show local ranking between users 
-
-
-
 import SwiftUI
 
+/// This is to show local ranking between users.
 struct RankingView: View {
     var body: some View {
         VStack(spacing: 20) {

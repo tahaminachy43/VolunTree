@@ -1,10 +1,3 @@
-//
-//  RecommendationRequests.swift
-//  VolunTree
-//
-//  Created by Savitur Maharaj  on 2025-03-18.
-//
-
 import SwiftUI
 
 /// TO DO: This view will have a list of users who are requesting a recommendtion letter for an opportunity that they have completed before

@@ -1,6 +1,8 @@
 import SwiftUI
 
-/// The chat view for the volunteer side. It is not fully completed yet.
+/// The chat view for the volunteer side.
+///
+/// > Note: It is not fully completed yet. It needs the UI and backend functionality.
 struct Chat: View {
     
     /// The view that shows the volunteer chat page.

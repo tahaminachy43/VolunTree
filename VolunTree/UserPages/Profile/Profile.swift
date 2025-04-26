@@ -7,6 +7,8 @@ import SwiftUI
 /// Returns:
 /// - A view that shows the volunteer's profile page.
 struct ProfilePage: View {
+    
+    // The view to show the user profile.
     var body: some View {
         NavigationView {
             ScrollView {
@@ -138,6 +140,7 @@ struct ProfilePage: View {
     }
 }
 
+/// The half circle background on the user profile, used for styling.
 struct HalfCircleBackground: Shape {
     func path(in rect: CGRect) -> Path {
         var path = Path()

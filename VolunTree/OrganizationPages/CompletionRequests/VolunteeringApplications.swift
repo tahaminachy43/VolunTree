@@ -1,13 +1,6 @@
-//
-//  VolunteeringApplications.swift
-//  VolunTree
-//
-//  Created by Savitur Maharaj  on 2025-03-18.
-//
-
 import SwiftUI
 
-/// TO DO: View showing user applications to complete opportunities posted by this org
+/// TO DO: View showing user applications to complete opportunities posted by this organization.
 struct VolunteeringApplications: View {
     var body: some View {
         NavigationView {

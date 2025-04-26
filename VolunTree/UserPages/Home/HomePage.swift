@@ -2,7 +2,7 @@ import SwiftUI
 import FirebaseAuth
 import FirebaseFirestore
 
-// Structure in database:
+/// Structure in database for a volunteering opportunity.
 struct VolunteeringOpportunity: Identifiable {
     var id: String                      // id of document in collection
     var orgId: String

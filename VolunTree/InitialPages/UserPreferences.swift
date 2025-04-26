@@ -1,14 +1,8 @@
-//
-//  UserPreferences.swift
-//  VolunTree
-//
-//  Created by Savitur Maharaj  on 2025-04-01.
-//
-/// This is the page where after registering they get to choose between preferences that they woukd be interested in participating.
 import SwiftUI
 import FirebaseAuth
 import FirebaseFirestore
 
+/// This is the page where after registering, the user gets to choose the volunteering types that they are interested in.
 struct UserPreferences: View {
     // User ID, Email and Password from Register view:
     let userId: String

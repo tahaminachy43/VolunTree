@@ -1,13 +1,7 @@
-//
-//  Starter.swift
-//  VolunTree
-//
-//  Created by Tahamina Mostafa chowdhury on 2025-03-03.
-/// This is the initial starter page for the VolunTree app which leads you to Sign In and Register
-/// 
 import SwiftUI
 import UIKit
 
+/// This is the initial starter page for the VolunTree app which leads you to Sign In and Register
 struct Starter: View {
     @State private var isAnimating = false
     @State private var showSignIn = false

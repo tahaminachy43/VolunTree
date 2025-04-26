@@ -1,14 +1,8 @@
-//
-//  Register.swift
-//  VolunTree
-//
-//  Created by Tahamina Mostafa chowdhury on 2025-03-05.
-//
-/// This page is only for users to register and takes in their fullname, emaill, password, confirmpassword and throws error 
 import SwiftUI
 import FirebaseAuth
 import FirebaseFirestore
 
+/// This page is only for users to register and takes in the following input: full name, email, password, and confirm password. It also throws an error for incorrect input.
 struct Register: View {
     @State private var fullName: String = ""
     @State private var email: String = ""

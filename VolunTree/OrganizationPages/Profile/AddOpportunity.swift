@@ -1,22 +1,22 @@
-//
-//  AddOpportunity.swift
-//  VolunTree
-//
-//  Created by Savitur Maharaj  on 2025-03-18.
-//
-
 import SwiftUI
 import Firebase
 import MapKit
 
-/// Categories that volunteering opportunities can be
+/// Categories that volunteering opportunities can be in.
 struct VolunteeringType: Identifiable {
     var id: String
     var name: String
 }
 
+/// View to add a volunteer opportunity. This is in the organization side.
+///
+/// Parameters:
+/// - orgID: The organization's ID.
+///
+/// Returns:
+/// - The view that the organization can use to add opportunities.
 struct AddOpportunity: View {
-    var orgId: String   // Passed from OrganizationProfile()
+    var orgId: String   /// Passed from OrganizationProfile()
     
     @State private var name: String = ""
     @State private var selectedTypes: [String] = []                     // Types to be used by users in filtering
@@ -27,6 +27,7 @@ struct AddOpportunity: View {
     @State private var alertMessage = ""
     @Environment(\.presentationMode) var presentationMode
     
+    /// The view that the organization can use to add opportunities.
     var body: some View {
         NavigationView {
             ScrollView {
@@ -122,7 +123,7 @@ struct AddOpportunity: View {
         }
     }
     
-    // Function to used in selecting types:
+    /// Function used in selecting types:
     func toggleTypeSelection(_ type: String) {
         if selectedTypes.contains(type) {
             selectedTypes.removeAll { $0 == type }
@@ -131,7 +132,7 @@ struct AddOpportunity: View {
         }
     }
     
-    // Get types from API:
+    /// Function to fetch types from API:
     func fetchVolunteeringTypes() {
         let db = Firestore.firestore()
         db.collection("VolunteeringType").getDocuments { snapshot, error in
@@ -150,7 +151,7 @@ struct AddOpportunity: View {
         }
     }
     
-    // Try to make opp:
+    /// Function to make opportunity:
     func createOpp() {
         // Ensure all fields are filled:
         guard !name.isEmpty, !description.isEmpty, !address.isEmpty, !selectedTypes.isEmpty else {

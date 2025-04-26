@@ -1,10 +1,3 @@
-//
-//  Profile.swift
-//  VolunTree
-//
-//  Created by Savitur Maharaj  on 2025-03-18.
-//
-
 import SwiftUI
 import UIKit
 import Firebase

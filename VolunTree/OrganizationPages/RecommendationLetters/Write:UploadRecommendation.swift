@@ -1,10 +1,3 @@
-//
-//  Write:UploadRecommendation.swift
-//  VolunTree
-//
-//  Created by Savitur Maharaj  on 2025-03-18.
-//
-
 import SwiftUI
 
 /// This view allows the org to write recommendation letter for a user who has completed a volunteering opportunity
