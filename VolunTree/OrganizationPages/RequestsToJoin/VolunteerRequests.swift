@@ -11,24 +11,24 @@ import FirebaseFirestore
 import FirebaseAuth
 import FirebaseStorage
 
-// Daata for each request card:
+/// Data for each applicant's request card: ``VolunteerCard``
 struct VolunteerRequest: Identifiable {
     let id: String
     let pfpURL: String
     let oppName: String
     let userName: String
-    let applicationId: String  // used by ApplicationPage
+    let applicationId: String  // Used by ApplicationPage
 }
 
 
+/// This view shows the lists applicant requests to join a volunteering opportunity
 struct VolunteerRequests: View {
     @State private var requests: [VolunteerRequest] = []
-    @State private var navigateToProfile = false
+    @State private var navigateToProfile = false            // Set to true when the org clicks view request and goes to ApplicationPage
     @State private var selectedRequest: VolunteerRequest?
     
-    // Current organization ID:
-    @State private var orgId: String = ""
-    
+    @State private var orgId: String = ""                   // Current organization ID:
+
     var body: some View {
         NavigationView {
             ZStack {
@@ -42,7 +42,7 @@ struct VolunteerRequests: View {
                         .padding()
                         .foregroundStyle(Color.darkGreen)
                     
-                    // request cards
+                    // Request cards
                     ScrollView {
                         LazyVStack(spacing: 110) {
                             ForEach(requests) { request in
@@ -57,7 +57,7 @@ struct VolunteerRequests: View {
                                 )
                                 .padding(.horizontal)
                                 
-                                // Delete button
+                                // TO DO: Add delete button to delete a request
     
                             }
                         }
@@ -97,6 +97,7 @@ struct VolunteerRequests: View {
         }
     }
     
+    // Get list of requests
     func fetchRequests() {
         let db = Firestore.firestore()
         let requestsRef = db.collection("ApplicationsToJoinVolOpp")

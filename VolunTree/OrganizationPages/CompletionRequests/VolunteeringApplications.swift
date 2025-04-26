@@ -1,5 +1,5 @@
 //
-//  RecommendationRequests.swift
+//  VolunteeringApplications.swift
 //  VolunTree
 //
 //  Created by Savitur Maharaj  on 2025-03-18.
@@ -7,7 +7,8 @@
 
 import SwiftUI
 
-struct RecommendationRequests: View {
+/// TO DO: View showing user applications to complete opportunities posted by this org
+struct VolunteeringApplications: View {
     var body: some View {
         NavigationView {
             ZStack {
@@ -15,8 +16,8 @@ struct RecommendationRequests: View {
                     .ignoresSafeArea()
                 
                 VStack (spacing: 30){
-                    Text("Letter Requests")
-                        .font(.largeTitle)
+                    Text("Volunteers wanting to complete")
+                        .font(.title3)
                         .bold()
                         .padding()
                         .foregroundStyle(Color.darkGreen)

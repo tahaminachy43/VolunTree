@@ -9,6 +9,7 @@
 
 import SwiftUI
 
+/// Allows the user navigate using the ``OrgNavBar``
 struct OrganizationView: View {
     @State private var pageNum: Double = 3
 

@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+/// TO DO: Show current volunteers at org and allow the org to remove them
 struct CurrentVolunteers: View {
     let volunteers: [(position: String, name: String, action: () -> Void)] = [
         ("Volunteer #1", "Jane Doe", {print("Tapped!")} ),

@@ -7,11 +7,12 @@
 
 import SwiftUI
 
+/// This view allows the org to write recommendation letter for a user who has completed a volunteering opportunity
 struct Write_UploadRecommendation: View {
-    @State private var volunteerName: String = "Volunteer"
-    @State private var pfp: Image? = Image(systemName: "person.crop.circle")
+    @State private var volunteerName: String = "Volunteer"                      // Applicant's name
+    @State private var pfp: Image? = Image(systemName: "person.crop.circle")    // Applican't pfp
     @State private var position: String = "Cook"
-    @State private var orgUserName: String = ""
+    @State private var orgUserName: String = ""                                 // Currently logged in org
     @State private var hours: String = ""
     @State private var letter: String = ""
     @State private var pdf: URL? = nil
@@ -38,7 +39,7 @@ struct Write_UploadRecommendation: View {
                             .clipShape(Circle())
                         
                         Button(action: {
-                            // Add functionality to view profile later
+                            // TO DO: Add functionality to view user profile
                         }) {
                             HStack {
                                 Image(systemName: "arrow.forward.circle.fill")
@@ -93,7 +94,7 @@ struct Write_UploadRecommendation: View {
                                 .overlay(RoundedRectangle(cornerRadius: 8).stroke(Color.darkGreen, lineWidth: 1))
                         }
 
-                        
+                        // TO DO: Allow the user to upload a pdf instead of writing in the app
                         Button(action: {
                             uploadPDF()
                         }) {
@@ -146,12 +147,12 @@ struct Write_UploadRecommendation: View {
             }
         }
     }
-
+    
+//  TO DO: API Calls
     func uploadPDF() {
         
     }
-    
-    //API Calls
+
     func fetchApplication(){
         
     }
@@ -164,3 +165,7 @@ struct Write_UploadRecommendation: View {
 #Preview {
     Write_UploadRecommendation()
 }
+
+
+// To consider: Leverage AI to generate a recommendation letter based on certain prompts.
+// This will save orgs a lot of time, especially if they have a large number of volunteers.

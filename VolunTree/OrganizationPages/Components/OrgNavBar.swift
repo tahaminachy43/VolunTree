@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+/// NavBar at the bottom used for navigation
 struct OrgNavBar: View {
     var pageNum: Double
     var onIconTap: (Double) -> Void

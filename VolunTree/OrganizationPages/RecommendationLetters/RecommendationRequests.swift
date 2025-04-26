@@ -1,5 +1,5 @@
 //
-//  VolunteeringApplications.swift
+//  RecommendationRequests.swift
 //  VolunTree
 //
 //  Created by Savitur Maharaj  on 2025-03-18.
@@ -7,7 +7,8 @@
 
 import SwiftUI
 
-struct VolunteeringApplications: View {
+/// TO DO: This view will have a list of users who are requesting a recommendtion letter for an opporunity that they have completed before
+struct RecommendationRequests: View {
     var body: some View {
         NavigationView {
             ZStack {
@@ -15,8 +16,8 @@ struct VolunteeringApplications: View {
                     .ignoresSafeArea()
                 
                 VStack (spacing: 30){
-                    Text("Volunteers wanting to complete")
-                        .font(.title3)
+                    Text("Letter Requests")
+                        .font(.largeTitle)
                         .bold()
                         .padding()
                         .foregroundStyle(Color.darkGreen)

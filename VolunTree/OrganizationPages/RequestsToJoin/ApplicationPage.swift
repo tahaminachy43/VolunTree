@@ -10,9 +10,10 @@ import Firebase
 import FirebaseFirestore
 import FirebaseAuth
 
+/// This view shows an individual's request to join a  volunteering opportunity posted by this org/company/individual
 struct ApplicationPage: View {
-    @State private var supplementaryMessage: String = ""
-    @State private var currentStatus: String = "pending"
+    @State private var supplementaryMessage: String = ""            // Message sent by user with request
+    @State private var currentStatus: String = "pending"            // Request initially sent by user is "pending"
 
     var position: String
     var name: String
@@ -31,16 +32,16 @@ struct ApplicationPage: View {
                         .padding()
                         .foregroundStyle(Color.darkGreen)
 
-                    // user profile picture
+                    // User pfp
                     Image(systemName: "person.crop.circle.fill")
                         .foregroundStyle(Color.darkGreen)
                         .font(.system(size: 80))
                         .padding(.bottom, 30)
 
-                    // view profile button
+                    // View Profile of Applicant
                     Button(action: {
                         print("View profile tapped")
-                        // You can implement the action to view the user's profile
+                        // TO DO: implement the action to view the user's profile
                     }) {
                         HStack {
                             Image(systemName: "play.fill")
@@ -58,7 +59,7 @@ struct ApplicationPage: View {
                     .cornerRadius(500)
                     .fixedSize()
 
-                    // position name
+                    // Position name of opportunity
                     HStack {
                         Spacer()
                         Text("Position: \(position)")
@@ -91,7 +92,7 @@ struct ApplicationPage: View {
                         .shadow(radius: 5)
                         .foregroundColor(.black)
                         .multilineTextAlignment(.leading)
-                        .lineLimit(nil)                    // Allow text to wrap
+                        .lineLimit(nil)                    
                         .padding(.top, 20)
 
                     // Spacer to push buttons to the bottom
