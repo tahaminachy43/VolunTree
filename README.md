@@ -16,6 +16,8 @@ The OrganizationPages/ and UserPages/ folders each contain a Components/ folder 
 
 
 ## Using the application
+Note: The application was designed using the iPhone 16 Pro screen size. Thus, the application may look different on other phone sizes. 
+
 The initial view to start the app is at InitialPages/Starter. 
 Users can register/log in, while organizations can only sign in as they need to get approved by us before receiving an account. This allows us to ensure verified organizations are on our application.
 
