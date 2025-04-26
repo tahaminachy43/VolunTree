@@ -9,18 +9,29 @@ import SwiftUI
 import FirebaseAuth
 import FirebaseFirestore
 
+/// Shows more details regarding a volunteer opportunity and allows the user to apply to it.
+///
+/// Parameters:
+/// - opportunity: This is of type "VolunteeringOpportunity", which has all of the opportunity information.
+///
+/// Returns:
+/// - A view that shows the volunteer opportunity details and allows the user to submit an application.
 struct ViewOpportunity: View {
     let opportunity: VolunteeringOpportunity
     @State private var supplementaryMsg: String = ""
     @Environment(\.presentationMode) var presentationMode // go back to home upon successful submission
+        
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 16) {
+                
+                // opportunity name
                 Text(opportunity.name)
                     .font(.title)
                     .bold()
                     .foregroundStyle(Color.darkColor)
                 
+                // opportunity description
                 VStack(alignment: .leading, spacing: 2) {
                     Text("Description:")
                         .fontWeight(.bold)
@@ -32,40 +43,56 @@ struct ViewOpportunity: View {
                         .foregroundStyle(Color.darkGreen)
                 }
                 
-                
-                Text("Address:")
-                    .fontWeight(.bold)
-                    .font(.subheadline)
-                    .foregroundStyle(Color.darkGreen)
-                
-                Text(opportunity.address)
-                    .padding(.bottom, 10)
-                
-                Text("Volunteering Types:")
-                    .fontWeight(.bold)
-                    .font(.subheadline)
-                    .foregroundStyle(Color.darkGreen)
-
-                LazyHGrid(rows: [GridItem(.fixed(30))], spacing: 10) {
-                    ForEach(opportunity.volunteeringTypes, id: \.self) { type in
-                        Text(type)
-                            .font(.caption)
-                            .padding(.horizontal, 10)
-                            .padding(.vertical, 6)
-                            .background(Color.lightGreen)
-                            .cornerRadius(10)
-                    }
+                // opportunity address
+                VStack(alignment: .leading, spacing: 2) {
+                    Text("Address:")
+                        .fontWeight(.bold)
+                        .font(.headline)
+                        .foregroundStyle(Color.darkGreen)
+                    
+                    Text(opportunity.address)
+                        .padding(.bottom, 10)
+                        .foregroundStyle(Color.darkGreen)
                 }
-                .padding(.vertical, 10)
                 
-                Text("Supplementary Message:")
-                    .fontWeight(.bold)
-                    .font(.subheadline)
-                    .foregroundStyle(Color.darkGreen)
+                // show the volunteering types
+                VStack(alignment: .leading, spacing: 0) {
+                    Text("Volunteering Types:")
+                        .fontWeight(.bold)
+                        .font(.headline)
+                        .foregroundStyle(Color.darkGreen)
+                    
+                    LazyHGrid(rows: [GridItem(.fixed(30))], spacing: 10) {
+                        ForEach(opportunity.volunteeringTypes, id: \.self) { type in
+                            Text(type)
+                                .font(.caption)
+                                .padding(.horizontal, 10)
+                                .padding(.vertical, 6)
+                                .background(Color.lightGreen)
+                                .foregroundStyle(Color.darkColor)
+                                .cornerRadius(10)
+                        }
+                    }
+                    .padding(.vertical, 10)
+                }
                 
-                TextField("Enter your message", text: $supplementaryMsg)
-                    .textFieldStyle(RoundedBorderTextFieldStyle())
-                    .padding(.bottom, 20)
+                // allow user to send a message in application
+                VStack(alignment: .leading, spacing: 4) {
+                    Text("Supplementary Message:")
+                        .fontWeight(.bold)
+                        .font(.headline)
+                        .foregroundStyle(Color.darkGreen)
+                    
+                    TextField("Enter your message", text: $supplementaryMsg)
+                        .padding(10)
+                        .background(Color.white)
+                        .cornerRadius(8)
+                        .foregroundColor(.darkGreen)
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 8)
+                                .stroke(Color.darkGreen.opacity(0.5), lineWidth: 1)
+                        )
+                }
                 
                 Spacer() // This helps center the button
 
