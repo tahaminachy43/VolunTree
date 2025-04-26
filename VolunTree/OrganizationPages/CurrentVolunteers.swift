@@ -27,26 +27,28 @@ struct CurrentVolunteers: View {
                         .foregroundStyle(Color.darkGreen)
                     
                     // volunteer cards
-                    ScrollView {
-                        LazyVStack(spacing: 110) {
-                            ForEach(volunteers.indices, id: \.self) { index in
-                                VolunteerCard(
-                                    position: volunteers[index].position,
-                                    name: volunteers[index].name,
-                                    onButtonTap: volunteers[index].action
-                                )
-                                .padding(.horizontal)
-                            }
-                        }
-                        .padding(.top, 50)
-                        .padding(.bottom, 100)
-                    }
+//                    ScrollView {
+//                        LazyVStack(spacing: 110) {
+//                            ForEach(volunteers.indices, id: \.self) { index in
+//                                VolunteerCard(
+//                                    position: volunteers[index].position,
+//                                    name: volunteers[index].name,
+//                                    onButtonTap: volunteers[index].action
+//                                )
+//                                .padding(.horizontal)
+//                            }
+//                        }
+//                        .padding(.top, 50)
+//                        .padding(.bottom, 100)
+//                    }
 
                                 
                 }
                 .frame(maxHeight: .infinity, alignment: .top)
             }
         }
+        .navigationBarBackButtonHidden(true)
+        .navigationBarHidden(true)
        
     }
 }

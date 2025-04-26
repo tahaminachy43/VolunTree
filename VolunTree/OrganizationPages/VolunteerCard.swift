@@ -9,10 +9,10 @@
 import SwiftUI
 
 struct VolunteerCard: View {
-    var position: String = "Position"
-    var name: String = "Volunteer Name"
-    
-    var onButtonTap: () -> Void
+    let position: String
+    let name: String
+    let pfpURL: String
+    let onButtonTap: () -> Void
     
     var body: some View {
         GeometryReader { geometry in
@@ -20,12 +20,31 @@ struct VolunteerCard: View {
                 Color.lightGreen
                 
                 HStack {
-                    // profile picture
-                    Image(systemName: "person.crop.circle.fill")
-                        .foregroundStyle(Color.darkGreen)
-                        .font(.system(size: 45))
+                    // Profile Picture
+                    AsyncImage(url: URL(string: pfpURL)) { phase in
+                        switch phase {
+                        case .empty:
+                            ProgressView()
+                                .frame(width: 60, height: 60)
+                        case .success(let image):
+                            image
+                                .resizable()
+                                .scaledToFill()
+                                .frame(width: 60, height: 60)
+                                .clipShape(Circle())
+                        case .failure:
+                            Image(systemName: "person.crop.circle.fill")
+                                .resizable()
+                                .scaledToFill()
+                                .frame(width: 60, height: 60)
+                                .foregroundColor(.gray)
+                        @unknown default:
+                            EmptyView()
+                        }
+                    }
+
                     
-                    // name and position
+                    // Volunteering Position and Applicant's Name
                     VStack(alignment: .leading, spacing: 4) {
                         Text(position)
                             .font(.title3)
@@ -42,7 +61,7 @@ struct VolunteerCard: View {
 
                     Spacer()
 
-                    // view button
+                    // View Button
                     Button(action: {
                         onButtonTap()
                     }) {
@@ -68,4 +87,14 @@ struct VolunteerCard: View {
             .position(x: geometry.size.width / 2, y: geometry.size.height / 2)
         }
     }
+}
+
+#Preview {
+    VolunteerCard(
+        position: "Animal Testing",
+        name: "Nobara",
+        pfpURL: "https://firebasestorage.googleapis.com/v0/b/voluntree-90104.firebasestorage.app/o/UserPictures%2FL29cwrrRatS3t573cebrdNdEleb2.png?alt=media&token=6c25296f-a1f1-4707-91e0-fe439011e8b7",
+        onButtonTap: {}
+    )
+    .frame(height: 100) // Set a height to match the GeometryReader
 }

@@ -6,20 +6,28 @@
 //
 
 import SwiftUI
+import Firebase
+import FirebaseFirestore
+import FirebaseAuth
+import FirebaseStorage
+
+// Daata for each request card:
+struct VolunteerRequest: Identifiable {
+    let id: String
+    let pfpURL: String
+    let oppName: String
+    let userName: String
+    let applicationId: String  // used by ApplicationPage
+}
+
 
 struct VolunteerRequests: View {
-    @State private var requests: [(position: String, name: String)] = [
-        ("Recreational Assistant", "Alice Johnson"),
-        ("Student Volunteer", "Bob Smith"),
-        ("Helper", "June Lindt"),
-        ("Social Worker", "Linda Brown"),
-        ("Social Worker", "Alice Johnson"),
-        ("Student Volunteer", "Bob Smith"),
-        ("Recreational Assistant", "Alice Smith")
-        ] // sample data
-    
+    @State private var requests: [VolunteerRequest] = []
     @State private var navigateToProfile = false
-    @State private var selectedIndex: Int?
+    @State private var selectedRequest: VolunteerRequest?
+    
+    // Current organization ID:
+    @State private var orgId: String = ""
     
     var body: some View {
         NavigationView {
@@ -28,8 +36,8 @@ struct VolunteerRequests: View {
                     .ignoresSafeArea()
                 
                 VStack (spacing: 30){
-                    Text("Volunteer Requests")
-                        .font(.largeTitle)
+                    Text("Volunteers requesting to join")
+                        .font(.title2)
                         .bold()
                         .padding()
                         .foregroundStyle(Color.darkGreen)
@@ -37,13 +45,14 @@ struct VolunteerRequests: View {
                     // request cards
                     ScrollView {
                         LazyVStack(spacing: 110) {
-                            ForEach(requests.indices, id: \.self) { index in
+                            ForEach(requests) { request in
                                 VolunteerCard(
-                                    position: requests[index].position,
-                                    name: requests[index].name,
+                                    position: request.oppName,
+                                    name: request.userName,
+                                    pfpURL: request.pfpURL,
                                     onButtonTap: {
+                                        selectedRequest = request
                                         navigateToProfile = true
-                                        selectedIndex = index
                                     }
                                 )
                                 .padding(.horizontal)
@@ -54,27 +63,95 @@ struct VolunteerRequests: View {
                         }
                         .padding(.top, 50)
                         .padding(.bottom, 100)
-                        .background(
-                            NavigationLink(
-                                destination: ApplicationPage(position: requests[selectedIndex ?? 0].position, name: requests[selectedIndex ?? 0].name),
-                                isActive: $navigateToProfile,       // this is deprecated, need to find another way
-                                label: { EmptyView() }
-                            )
-                            .foregroundStyle(Color.darkGreen)
-                            .background(Color.darkGreen)
-                            .navigationBarBackButtonHidden(true)
-                        )
+                        .navigationBarBackButtonHidden(true)
                         
                     }
+                    
+                    if let request = selectedRequest {
+                        NavigationLink(
+                            destination: ApplicationPage(position: request.oppName, name: request.userName, applicationId: request.applicationId),
+                            isActive: $navigateToProfile,
+                            label: { EmptyView() }
+                        )
+                        .hidden()
+                    }
+    
 
                 }
                 .frame(maxHeight: .infinity, alignment: .top)
                 
             }
         }
-       
+        .navigationBarBackButtonHidden(true)
+        .navigationBarHidden(true)
+        .onAppear {
+            fetchOrgId()
+        }
     }
     
+    // Get the current org ID
+    func fetchOrgId() {
+        if let currentUserId = Auth.auth().currentUser?.uid {
+            orgId = currentUserId
+            fetchRequests()
+        }
+    }
+    
+    func fetchRequests() {
+        let db = Firestore.firestore()
+        let requestsRef = db.collection("ApplicationsToJoinVolOpp")
+            
+        requestsRef.whereField("status", isEqualTo: "pending").getDocuments { snapshot, error in
+            guard let documents = snapshot?.documents, error == nil else { return }
+
+            var newRequests: [VolunteerRequest] = []
+                
+            // Fetch user and opportunity data:
+            for doc in documents {
+                let data = doc.data()
+                    
+                guard let userId = data["userId"] as? String,
+                        let opportunityId = data["opportunityId"] as? String else { continue }
+                    
+                // Get user info:
+                db.collection("Users").document(userId).getDocument { userDoc, _ in
+                    var userName = ""
+                    var profileURL = ""
+                    
+                    if let userData = userDoc?.data() {
+                        userName = userData["fullName"] as? String ?? ""
+                        profileURL =  userData["pfpURL"] as? String ?? ""
+                    }
+                    
+                    // Get opp info:
+                    db.collection("VolunteeringOpportunity").document(opportunityId).getDocument { oppDoc, _ in
+                        var opportunityName = ""
+                        
+                        if let oppData = oppDoc?.data(), oppData["orgId"] as? String == orgId {
+                            opportunityName = oppData["name"] as? String ?? ""
+                        }
+                        
+                        // Add request to list once both user and opportunity data are fetched
+                        if !opportunityName.isEmpty {
+                            let request = VolunteerRequest(
+                                id: doc.documentID,
+                                pfpURL: profileURL,
+                                oppName: opportunityName,
+                                userName: userName,
+                                applicationId: doc.documentID
+                            )
+                            newRequests.append(request)
+                            
+                            DispatchQueue.main.async {
+                                self.requests = newRequests
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
 }
 
 #Preview {
