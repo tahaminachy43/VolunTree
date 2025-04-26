@@ -15,13 +15,10 @@ struct EditProfileView: View {
             
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
-            .padding(.horizontal, 30)
-            .padding(.top, 20)
-            .background(Color(Color.background))
-            .cornerRadius(10)
+            .background(Color.background)
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .background(Color(Color.background))
+        .background(Color.background)
         .ignoresSafeArea(edges: .bottom)
     }
     
