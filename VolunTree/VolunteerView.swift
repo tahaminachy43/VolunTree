@@ -9,8 +9,9 @@
 
 import SwiftUI
 
+/// Connects the navigation bar with the different pages on the Volunteer Side.
 struct VolunteerView: View {
-    @State private var pageNum: Double = 3
+    @State private var pageNum: Double = 5
 
     var body: some View {
         ZStack {
