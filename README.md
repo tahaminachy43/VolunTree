@@ -54,12 +54,12 @@ _If you're reading this and are interested in helping out with this app over Sum
 
 
 ## Appendix A: Resources
-Throughout the application's development, we made use of several resources, including Swift documentation, online articles (such as StackOverflow), video tutorials, and artificial intelligence (AI) tools like ChatGPT.
+We made use of several resources, including Swift documentation, online articles (such as StackOverflow), video tutorials, and artificial intelligence (AI) tools like ChatGPT.
 
 **Use of AI Tools:**
-- ChatGPT - Assisted primarily in the following areas:
-  - Debugging Code: Helped identify and resolve syntax errors and logic issues.
-  - Styling the Frontend: Assisted with frontend styling, including animations and fixing bugs.
-  - Firebase Queries: Helped with the creation and optimization of Firebase queries for backend API calls.
+- ChatGPT - It was primarily used for the following things:
+  - Debugging Code: It helped identify and resolve syntax errors and logic issues.
+  - Styling the Frontend: It helped us with frontend styling, including animations and fixing bugs.
+  - Firebase Queries: It helped with the creation and optimization of Firebase queries for backend API calls.
 
-While AI tools played a role in assisting with technical aspects, all final code and decisions were reviewed and implemented by the team. The AI was used as a supplementary resource for learning and problem-solving (along with the other resources mentioned earlier), which was especially useful as we started learning Swift at the beginning of the semester. It helped us implement more complex features, such as animations, more effectively.
+While AI helped us with the technical aspects and our learning, all final code and decisions were reviewed and implemented by the team. It was used as a resource for learning and problem-solving (along with the other resources mentioned earlier), which was especially useful as we started learning Swift at the beginning of the semester. It helped us implement more complex features, such as animations, more effectively.
