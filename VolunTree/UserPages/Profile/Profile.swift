@@ -154,6 +154,7 @@ struct HalfCircleBackground: Shape {
 
 // this needs to be changed when backened in better
 
+/// Organization card to show the all the organizations that the volunteer has worked with.
 struct OrganizationCard: View {
 //    let name: String
 //    let logo: String
