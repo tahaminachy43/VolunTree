@@ -110,7 +110,7 @@ struct SignIn: View {
             }
             .background(Color.lightGray)
             .edgesIgnoringSafeArea(.all)
-            .navigationBarBackButtonHidden(true) // 👈 This now works!
+            .navigationBarBackButtonHidden(true)
         }
     }
 
