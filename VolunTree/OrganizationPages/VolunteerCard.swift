@@ -1,19 +1,22 @@
-//
-//  VolunteerCard.swift
-//  VolunTree
-//
-//  Created by Khushi Choksi on 2025-03-18.
-//
-
-
 import SwiftUI
 
+/// This card shows the volunteering position, volunteer name, their profile picture, and leads to their profile.
+///
+/// Parameters:
+/// - position: The volunteering position.
+/// - name: The volunteer's name.
+/// - pfpURL: The address to volunteer's profile picture stored in the backend.
+/// - onButtonTap: An action that occurs when the view button is tapped.
+///
+/// Returns:
+/// - A single volunteer card that shows the position, name, profile picture, and a "VIEW" button.
 struct VolunteerCard: View {
     let position: String
     let name: String
     let pfpURL: String
     let onButtonTap: () -> Void
     
+    /// The view for the volunteer card.
     var body: some View {
         GeometryReader { geometry in
             ZStack {
@@ -88,6 +91,8 @@ struct VolunteerCard: View {
         }
     }
 }
+
+
 
 #Preview {
     VolunteerCard(

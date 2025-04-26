@@ -1,9 +1,3 @@
-//
-//  NewChallengesView.swift
-//  VolunTree
-//
-//  Created by Tahamina Mostafa chowdhury on 2025-03-04.
-//
 import SwiftUI
 
 struct NewChallengesView: View {

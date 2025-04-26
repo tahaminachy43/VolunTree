@@ -1,29 +1,34 @@
-//
-//  Search.swift
-//  VolunTree
-//
-//  Created by Tahamina Mostafa chowdhury on 2025-03-05.
-//
-
 import SwiftUI
 import MapKit
 import CoreLocation
 
+// resources:
 // https://www.youtube.com/watch?v=LwU-4LMh9Qs
+// https://www.latlong.net/place/university-of-calgary-canada-405.html#:~:text=Latitude%20and%20longitude%20coordinates%20are,%2C%20Calgary%2C%20Alberta%2C%20Canada.
+// https://www.latlong.net/convert-address-to-lat-long.html
+// https://www.hackingwithswift.com/books/ios-swiftui/integrating-mapkit-with-swiftui
 
 
-/// 
+/// The volunteer opportunity search page on the volunteer side. It shows the map and a list of hard-coded volunteer opportunties.
+///
+/// > Note: This is not fully completed and needs to be connected to the backend.
+///
+///
 struct SearchPage: View {
     @State private var region = MapCameraPosition.region(
-            MKCoordinateRegion(
-                center: CLLocationCoordinate2D(latitude: 51.0447, longitude: -114.0719), // Calgary
-                span: MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
-            )
+        MKCoordinateRegion(
+            center: CLLocationCoordinate2D(latitude: 51.0447, longitude: -114.0719), // Calgary
+            span: MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
         )
+    )
     
-    let uni = CLLocationCoordinate2D(latitude: 51.0781, longitude: -114.1301)
-    let mustard_seed = CLLocationCoordinate2D(latitude: 51.049999, longitude: -114.066666)
+    /// Coordinates for the University of Calgary.
+    let uni = CLLocationCoordinate2D(latitude: 51.078621, longitude: -114.136719)
+    /// Coordinates for the Mustard Seed.
+    let mustard_seed = CLLocationCoordinate2D(latitude: 51.043003, longitude: -114.063035)
     
+    
+    /// View that shows the volunteer opportunity search page.
     var body: some View {
         ZStack {
             Color(Color.background)
@@ -119,8 +124,6 @@ struct SearchPage: View {
                     .padding(.top, 5)
                 }
             }
-            //.background(Color.background)
-            //.edgesIgnoringSafeArea(.bottom)
             .frame(maxHeight: .infinity, alignment: .top)
             
         }

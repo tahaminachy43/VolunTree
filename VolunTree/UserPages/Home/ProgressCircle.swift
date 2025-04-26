@@ -1,10 +1,3 @@
-//
-//  ProgressCircle.swift
-//  VolunTree
-//
-//  Created by Khushi Choksi on 2025-03-04.
-//
-
 import SwiftUI
 
 // resources:
@@ -20,15 +13,18 @@ import SwiftUI
 /// Returns:
 /// - A single animated progress circle filled in with the input value.
 struct ProgressCircle: View {
-    var progress: Double    
-    @State private var drawingStroke = false            // for animation
+    /// A Double value in the range 0 to 1. (e.g., 0.5 is equal to 50%). Anything outside of the range can have unexpected results.
+    var progress: Double
+    
+    @State private var drawingStroke = false            // to do trim if drawing stroke is true
     @State private var hasAppeared = false              // to ensure animation occurs once initially
     
-    // animation code
+    /// Animation code for filling up the progress circle.
     let animation = Animation
         .easeOut(duration: 3)
         .delay(0.5)
     
+    /// The view that shows the animated progress circle.
     var body: some View {
         ZStack {
             
@@ -37,7 +33,7 @@ struct ProgressCircle: View {
                 Circle()
                     .stroke(Color.lightGreen.gradient, style: StrokeStyle(lineWidth: 15))
                     .overlay {
-                        // progress circle fill
+                        // progress circle fill up to the inputted progress
                         Circle()
                             .trim(from: 0, to: drawingStroke ? progress : 0)
                             .stroke(
@@ -52,7 +48,7 @@ struct ProgressCircle: View {
                     .padding(10)
             }
             .animation(animation, value: drawingStroke)
-            .drawingGroup()                 // keeps the circle in place
+            .drawingGroup()                     // keeps the circle in place
             .onAppear {
                 if !hasAppeared {
                     hasAppeared = true
@@ -60,7 +56,7 @@ struct ProgressCircle: View {
                 }
             }
             
-            // progress percentage
+            // progress percentage text
             Text("\(Int(progress * 100))%")
                 .font(.custom("newtitle", size: 45))
                 .fontWeight(.black)

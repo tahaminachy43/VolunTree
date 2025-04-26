@@ -1,14 +1,9 @@
-//
-//  Chat.swift
-//  VolunTree
-//
-//  Created by Savitur Maharaj  on 2025-04-08.
-//
-
 import SwiftUI
 
 /// The chat view for the volunteer side. It is not fully completed yet.
 struct Chat: View {
+    
+    /// The view that shows the volunteer chat page.
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 16) {

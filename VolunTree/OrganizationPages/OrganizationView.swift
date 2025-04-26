@@ -1,17 +1,16 @@
-//
-//  OrganizationView.swift
-//  VolunTree
-//
-//  Created by Khushi Choksi on 2025-03-18.
-//
-
-//https://stackoverflow.com/questions/58560649/how-can-you-switch-views-without-having-a-navigationview-or-an-popover
-
 import SwiftUI
 
+// resources
+// https://stackoverflow.com/questions/58560649/how-can-you-switch-views-without-having-a-navigationview-or-an-popover
+
+/// Connects the navigation bar with the different pages on the Organization Side.
+///
+/// Returns:
+/// - The organization view that allows the users to navigate to the different pages easily.
 struct OrganizationView: View {
     @State private var pageNum: Double = 3
 
+    /// The view that shows and connects the navigation bar with the pages.
     var body: some View {
         ZStack {
             Color(Color.darkGreen)
@@ -31,6 +30,8 @@ struct OrganizationView: View {
                 OrgNavBar(pageNum: pageNum, onIconTap: { newPage in pageNum = newPage})
             }
         }
+        .navigationBarBackButtonHidden()
+        .toolbar(.hidden)
     }
 }
 

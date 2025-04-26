@@ -1,14 +1,8 @@
-//
-//  Profile.swift
-//  VolunTree
-//
-//  Created by Tahamina Mostafa chowdhury on 2025-03-03.
-//
-// edit profile page needed to be created
-// very hard coded need to replace with account information when the backened is done
 import SwiftUI
 
 /// The volunteer's profile page. It shows their name, bio, number of challenges completed and hours worked, and organizations that they worked with.
+///
+/// > Note: This page needs to be connected with the backend.
 ///
 /// Returns:
 /// - A view that shows the volunteer's profile page.
@@ -152,7 +146,7 @@ struct HalfCircleBackground: Shape {
     }
 }
 
-// this needs to be changed when backened in better
+// this needs to be changed when backend in better
 
 /// Organization card to show the all the organizations that the volunteer has worked with.
 struct OrganizationCard: View {

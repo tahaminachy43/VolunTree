@@ -1,10 +1,3 @@
-//
-//  ViewOpportunity.swift
-//  VolunTree
-//
-//  Created by Savitur Maharaj  on 2025-04-08.
-//
-
 import SwiftUI
 import FirebaseAuth
 import FirebaseFirestore
@@ -17,10 +10,15 @@ import FirebaseFirestore
 /// Returns:
 /// - A view that shows the volunteer opportunity details and allows the user to submit an application.
 struct ViewOpportunity: View {
+    /// This is of type "VolunteeringOpportunity", which has all of the opportunity information.
     let opportunity: VolunteeringOpportunity
+    
     @State private var supplementaryMsg: String = ""
+    
+    /// Used to go back to the home page upon successful submission.
     @Environment(\.presentationMode) var presentationMode // go back to home upon successful submission
-        
+    
+    /// The view that shows the volunteer opportunity details.
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 16) {
@@ -117,6 +115,8 @@ struct ViewOpportunity: View {
         .ignoresSafeArea(edges: .bottom) // to allow scrolling beyond the safe area
     }
     
+    
+    /// Function that connects to the backend using Firebase to submit the user's application to the organization side.
     func submitApplication() {
         let db = Firestore.firestore()
         guard let userId = Auth.auth().currentUser?.uid else { return }

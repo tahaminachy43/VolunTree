@@ -1,10 +1,3 @@
-//
-//  HomePage.swift
-//  VolunTree
-//
-//  Created by Khushi Choksi on 2025-03-03.
-//
-
 import SwiftUI
 import FirebaseAuth
 import FirebaseFirestore
@@ -28,6 +21,7 @@ struct HomePage: View {
     @State private var fullName: String = ""
     @State private var progress: Double = 0.5
 
+    /// The view for the volunteer's home page.
     var body: some View {
         NavigationView {
             ZStack {
@@ -95,6 +89,7 @@ struct HomePage: View {
         }
     }
     
+    /// Function that connects to the backend to fetch username.
     func fetchUserName() {
         // Get user id:
         guard let userId = Auth.auth().currentUser?.uid else {
@@ -113,6 +108,7 @@ struct HomePage: View {
         }
     }
     
+    /// Function that connects to the backend to fetch opportunities.
     func fetchOpportunities() {
         let db = Firestore.firestore()
         db.collection("VolunteeringOpportunity").getDocuments { snapshot, error in
