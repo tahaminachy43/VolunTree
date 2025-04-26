@@ -4,7 +4,7 @@
 //
 //  Created by Tahamina Mostafa chowdhury on 2025-03-05.
 //
-//
+/// This page is only for users to register and takes in their fullname, emaill, password, confirmpassword and throws error 
 import SwiftUI
 import FirebaseAuth
 import FirebaseFirestore

@@ -1,5 +1,10 @@
+//
+//  Starter.swift
+//  VolunTree
+//
+//  Created by Tahamina Mostafa chowdhury on 2025-03-03.
 import SwiftUI
-
+/// This is the challenges page with all the ongoing challenges, new challenges and ranking displayed that a user can join 
 struct ChallengesPage: View {
     @State private var selectedTab: Int = 0
     var body: some View {

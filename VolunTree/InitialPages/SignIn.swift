@@ -1,6 +1,6 @@
 import SwiftUI
 import FirebaseAuth
-
+/// This is the Sign In page that requires login and passwrod and if any of the field is blank, made sure to error check 
 struct SignIn: View {
     @State private var email: String = ""
     @State private var password: String = ""

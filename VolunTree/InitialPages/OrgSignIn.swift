@@ -1,6 +1,6 @@
 import SwiftUI
 import FirebaseAuth
-
+/// This is the org sign in and if the organization wants to sign in they mostly need to go through us to offcialy make them an organization profile
 struct OrgSignIn: View {
     @State private var email: String = ""
     @State private var password: String = ""

@@ -1,3 +1,9 @@
+//
+//  Starter.swift
+//  VolunTree
+//
+//  Created by Tahamina Mostafa chowdhury on 2025-03-03.
+/// This is the new challenges that a user can join 
 import SwiftUI
 
 struct NewChallengesView: View {
