@@ -6,10 +6,19 @@
 //
 import SwiftUI
 
+/// The navigation bar for the volunteer side.
+///
+/// Parameters:
+/// - pageNum: The number of the default page to show.
+/// - onIconTap: Function to apply when the user taps an icon in the navigation bar.
+///
+/// Returns:
+/// - A view with the navigation bar that has 5 icons total.
 struct NavigationBar: View {
     var pageNum: Double
     var onIconTap: (Double) -> Void
     
+    // page order: opportunity search, challenges, home, chat, profile
     var body: some View {
         HStack {
             Spacer()

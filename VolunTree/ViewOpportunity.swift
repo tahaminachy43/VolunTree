@@ -94,7 +94,7 @@ struct ViewOpportunity: View {
                         )
                 }
                 
-                Spacer() // This helps center the button
+                Spacer()
 
                 Button(action: submitApplication) {
                     Text("Submit Application")
@@ -104,17 +104,17 @@ struct ViewOpportunity: View {
                         .background(Color.darkGreen)
                         .cornerRadius(10)
                 }
-                .frame(maxWidth: .infinity) // Makes button full width inside VStack
+                .frame(maxWidth: .infinity) // makes button full width inside VStack
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .padding(.horizontal, 30)
-            .padding(.top, 20) // Add padding at the top to avoid content being too high
-            .background(Color(Color.background)) // Set background color of entire view
-            .cornerRadius(10) // Optional: for rounded corners on the entire content view
+            .padding(.top, 20)
+            .background(Color.background)
+            .cornerRadius(10)
         }
-        .frame(maxWidth: .infinity, maxHeight: .infinity) // Take up the full height
-        .background(Color(Color.background)) // Set background color of entire view
-        .ignoresSafeArea(edges: .bottom) // To allow scrolling beyond the safe area if needed
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .background(Color.background) // set background color of entire view
+        .ignoresSafeArea(edges: .bottom) // to allow scrolling beyond the safe area
     }
     
     func submitApplication() {
