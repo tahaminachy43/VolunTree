@@ -1,7 +1,7 @@
 # VolunTree
 _Helping to better connect volunteers and organizations._
 
-Created by: Tahamina (Moon) Chowdhury, Khushi Choksi, Savitur Maharaj
+Created for CPSC 599.83 by: Tahamina (Moon) Chowdhury, Khushi Choksi, Savitur Maharaj
 
 The goal of VolunTree is to allow users to easily access volunteering opportunities posted by organizations. We also aim to make it easier for organizations to find volunteers and efficiently manage their volunteer platforms. 
 
