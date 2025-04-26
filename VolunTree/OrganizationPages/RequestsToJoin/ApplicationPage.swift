@@ -1,24 +1,31 @@
-//
-//  ApplicationPage.swift
-//  VolunTree
-//
-//  Created by Khushi Choksi on 2025-03-18.
-//
-
 import SwiftUI
 import Firebase
 import FirebaseFirestore
 import FirebaseAuth
 
-/// This view shows an individual's request to join a  volunteering opportunity posted by this org/company/individual
+/// The view for the application page such shows the user's application to the organization.
+///
+///> Note: The page needs to be dark-mode friendly.
+///
+/// Parameters:
+/// - position: The volunteer position that the application is for.
+/// - name: The applicant's name.
+/// - applicationId: The application ID.
+///
+/// Returns:
+/// - A view that shows the user's application.
 struct ApplicationPage: View {
-    @State private var supplementaryMessage: String = ""            // Message sent by user with request
-    @State private var currentStatus: String = "pending"            // Request initially sent by user is "pending"
+    @State private var supplementaryMessage: String = ""        // supplementary message in text field
+    @State private var currentStatus: String = "pending"
 
+    /// The volunteer position that the application is for.
     var position: String
+    /// The applicant's name.
     var name: String
+    /// The application ID.
     var applicationId: String
 
+    /// The view that shows the user's application to a volunteer opportunity.
     var body: some View {
         NavigationView {
             ZStack {
@@ -32,16 +39,16 @@ struct ApplicationPage: View {
                         .padding()
                         .foregroundStyle(Color.darkGreen)
 
-                    // User pfp
+                    // user profile picture
                     Image(systemName: "person.crop.circle.fill")
                         .foregroundStyle(Color.darkGreen)
                         .font(.system(size: 80))
                         .padding(.bottom, 30)
 
-                    // View Profile of Applicant
+                    // view profile button
                     Button(action: {
                         print("View profile tapped")
-                        // TO DO: implement the action to view the user's profile
+                        // note: implement the action to view the user's profile
                     }) {
                         HStack {
                             Image(systemName: "play.fill")
@@ -59,7 +66,7 @@ struct ApplicationPage: View {
                     .cornerRadius(500)
                     .fixedSize()
 
-                    // Position name of opportunity
+                    // position name
                     HStack {
                         Spacer()
                         Text("Position: \(position)")
@@ -71,7 +78,7 @@ struct ApplicationPage: View {
                     .padding(.top, 20)
 
 
-                    // Supplementary message from applicant user
+                    // supplementary message from applicant user
                     HStack {
                         Spacer()
                         Text("Supplementary Message:")
@@ -92,13 +99,13 @@ struct ApplicationPage: View {
                         .shadow(radius: 5)
                         .foregroundColor(.black)
                         .multilineTextAlignment(.leading)
-                        .lineLimit(nil)                    
+                        .lineLimit(nil)                    // allows text to wrap
                         .padding(.top, 20)
 
-                    // Spacer to push buttons to the bottom
+                    // spacer to push buttons to the bottom
                     Spacer()
 
-                    // Approve or Reject buttons
+                    // approve or reject buttons
                     HStack {
                         Button(action: {
                             updateApplicationStatus(status: "approved")
@@ -147,7 +154,7 @@ struct ApplicationPage: View {
         }
     }
 
-    // Function to fetch application details, including the supplementary message
+    /// Function to fetch application details, including the supplementary message.
     func fetchApplicationDetails() {
         let db = Firestore.firestore()
         db.collection("ApplicationsToJoinVolOpp").document(applicationId).getDocument { snapshot, error in
@@ -163,7 +170,7 @@ struct ApplicationPage: View {
         }
     }
 
-    // Function to update the application status (approve or reject)
+    /// Function to update the application status (approve or reject).
     func updateApplicationStatus(status: String) {
         let db = Firestore.firestore()
         let applicationRef = db.collection("ApplicationsToJoinVolOpp").document(applicationId)

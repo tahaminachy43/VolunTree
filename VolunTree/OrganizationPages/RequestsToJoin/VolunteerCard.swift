@@ -1,47 +1,48 @@
-//
-//  VolunteerCard.swift
-//  VolunTree
-//
-//  Created by Khushi Choksi on 2025-03-18.
-//
-
-
 import SwiftUI
 
-/// Card component used in the ``VolunteerRequests`` view, which can be clicked to view the indiviudal applicant's request to join a volunteering opportunity
+/// This card shows the volunteering position, volunteer name, their profile picture, and leads to their profile.
+///
+/// Parameters:
+/// - position: The volunteering position.
+/// - name: The volunteer's name.
+/// - pfpURL: The address to volunteer's profile picture stored in the backend.
+/// - onButtonTap: An action that occurs when the view button is tapped.
+///
+/// Returns:
+/// - A single volunteer card that shows the position, name, profile picture, and a "VIEW" button.
 struct VolunteerCard: View {
-    let position: String                // Opportunity name
-    let name: String                    // Applicant's name
-    let pfpURL: String                  // Applicant's user pfp
-    let onButtonTap: () -> Void         // Used when the view button is clicked
+    let position: String
+    let name: String
+    let pfpURL: String
+    let onButtonTap: () -> Void
     
+    /// The view for the volunteer card.
     var body: some View {
         GeometryReader { geometry in
             ZStack {
-                Color.lightGreen        // Set card background colour
+                Color.lightGreen
                 
                 HStack {
                     // Profile Picture
                     AsyncImage(url: URL(string: pfpURL)) { phase in
                         switch phase {
-                            // Used when loading
-                            case .empty:
-                                ProgressView()
-                                    .frame(width: 60, height: 60)
-                            case .success(let image):
-                                image
-                                    .resizable()
-                                    .scaledToFill()
-                                    .frame(width: 60, height: 60)
-                                    .clipShape(Circle())
-                            case .failure:
-                                Image(systemName: "person.crop.circle.fill")
-                                    .resizable()
-                                    .scaledToFill()
-                                    .frame(width: 60, height: 60)
-                                    .foregroundColor(.gray)
-                            @unknown default:
-                                EmptyView()
+                        case .empty:
+                            ProgressView()
+                                .frame(width: 60, height: 60)
+                        case .success(let image):
+                            image
+                                .resizable()
+                                .scaledToFill()
+                                .frame(width: 60, height: 60)
+                                .clipShape(Circle())
+                        case .failure:
+                            Image(systemName: "person.crop.circle.fill")
+                                .resizable()
+                                .scaledToFill()
+                                .frame(width: 60, height: 60)
+                                .foregroundColor(.gray)
+                        @unknown default:
+                            EmptyView()
                         }
                     }
 
@@ -91,7 +92,8 @@ struct VolunteerCard: View {
     }
 }
 
-// Used for development purposes
+
+
 #Preview {
     VolunteerCard(
         position: "Animal Testing",
@@ -99,5 +101,5 @@ struct VolunteerCard: View {
         pfpURL: "https://firebasestorage.googleapis.com/v0/b/voluntree-90104.firebasestorage.app/o/UserPictures%2FL29cwrrRatS3t573cebrdNdEleb2.png?alt=media&token=6c25296f-a1f1-4707-91e0-fe439011e8b7",
         onButtonTap: {}
     )
-    .frame(height: 100) // Set height to match the GeometryReader
+    .frame(height: 100) // Set a height to match the GeometryReader
 }

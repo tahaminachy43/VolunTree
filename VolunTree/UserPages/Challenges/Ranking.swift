@@ -1,10 +1,5 @@
-//
-//  Ranking.swift
-//  VolunTree
-//
-//  Created by Tahamina Mostafa chowdhury on 2025-03-04.
-//
 import SwiftUI
+
 struct RankingView: View {
     var body: some View {
         VStack(spacing: 20) {

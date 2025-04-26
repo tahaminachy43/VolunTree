@@ -1,34 +1,40 @@
-//
-//  VolunteerRequests.swift
-//  VolunTree
-//
-//  Created by Khushi Choksi on 2025-03-18.
-//
-
 import SwiftUI
 import Firebase
 import FirebaseFirestore
 import FirebaseAuth
 import FirebaseStorage
 
-/// Data for each applicant's request card: ``VolunteerCard``
+/// Data for each request card.
+///
+/// Parameters:
+/// - id: The ID.
+/// - pfpURL: URL link to the profile picture.
+/// - oppName: The opportunity name.
+/// - userName: The user's name.
+/// - applicationId: The application ID.
 struct VolunteerRequest: Identifiable {
     let id: String
     let pfpURL: String
     let oppName: String
     let userName: String
-    let applicationId: String  // Used by ApplicationPage
+    let applicationId: String  // used by ApplicationPage
 }
 
-
-/// This view shows the lists applicant requests to join a volunteering opportunity
+/// The page that shows the applicants of volunteering positions at the organization.
+///
+/// > Note: This needs to be dark-mode friendly.
+///
+/// Returns:
+/// - The view that shows a list of all the applicants.
 struct VolunteerRequests: View {
     @State private var requests: [VolunteerRequest] = []
-    @State private var navigateToProfile = false            // Set to true when the org clicks view request and goes to ApplicationPage
+    @State private var navigateToProfile = false
     @State private var selectedRequest: VolunteerRequest?
     
-    @State private var orgId: String = ""                   // Current organization ID:
-
+    // Current organization ID:
+    @State private var orgId: String = ""
+    
+    /// The view that shows a list of all the applicants.
     var body: some View {
         NavigationView {
             ZStack {
@@ -42,7 +48,7 @@ struct VolunteerRequests: View {
                         .padding()
                         .foregroundStyle(Color.darkGreen)
                     
-                    // Request cards
+                    // request cards
                     ScrollView {
                         LazyVStack(spacing: 110) {
                             ForEach(requests) { request in
@@ -57,7 +63,7 @@ struct VolunteerRequests: View {
                                 )
                                 .padding(.horizontal)
                                 
-                                // TO DO: Add delete button to delete a request
+                                // Delete button
     
                             }
                         }
@@ -89,7 +95,7 @@ struct VolunteerRequests: View {
         }
     }
     
-    // Get the current org ID
+    /// Function to fetch the current organization ID from the backend.
     func fetchOrgId() {
         if let currentUserId = Auth.auth().currentUser?.uid {
             orgId = currentUserId
@@ -97,7 +103,7 @@ struct VolunteerRequests: View {
         }
     }
     
-    // Get list of requests
+    /// Function to fetch the current organization applicants.
     func fetchRequests() {
         let db = Firestore.firestore()
         let requestsRef = db.collection("ApplicationsToJoinVolOpp")

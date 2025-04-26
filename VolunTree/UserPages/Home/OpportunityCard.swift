@@ -1,10 +1,3 @@
-//
-//  OpportunityCard.swift
-//  VolunTree
-//
-//  Created by Savitur Maharaj  on 2025-04-08.
-//
-
 import SwiftUI
 
 /// A card for each volunteer opportunity to display its name and categories.
@@ -15,10 +8,13 @@ import SwiftUI
 /// Returns:
 /// - A single opportunity card displaying the name and categories.
 struct OpportunityCard: View {
+    /// This is of type "VolunteeringOpportunity", which has all of the opportunity information.
     let opportunity: VolunteeringOpportunity
+    
     @State private var width: CGFloat = 170;
     @State private var height: CGFloat = 200;
 
+    /// Displays the view that shows the card for each volunteer opportunity to display its name and categories.
     var body: some View {
         VStack(alignment: .listRowSeparatorLeading, spacing: 2) {
             Text(opportunity.name)
