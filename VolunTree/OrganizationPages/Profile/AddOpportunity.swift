@@ -9,6 +9,7 @@ import SwiftUI
 import Firebase
 import MapKit
 
+/// Categories that volunteering opportunities can be
 struct VolunteeringType: Identifiable {
     var id: String
     var name: String
@@ -158,7 +159,7 @@ struct AddOpportunity: View {
             return
         }
 
-        // Ensure address is compatible with MapKit:
+        // Ensure address is compatible with MapKit (this was taken from stackoverflow):
         let geocoder = CLGeocoder()
         geocoder.geocodeAddressString(address) { placemarks, error in
             guard let _ = placemarks?.first, error == nil else {
@@ -172,12 +173,13 @@ struct AddOpportunity: View {
                 "name": name,
                 "description": description,
                 "address": address,
-                "orgId": orgId,                             // passed from OrgProfile view
+                "orgId": orgId,                             // Passed from OrgProfile view
                 "volunteeringTypes": selectedTypes
             ]
 
             db.collection("VolunteeringOpportunity").addDocument(data: newOpp) { error in
                 if let error = error {
+                    // Failure
                     alertMessage = "Opportunity could not be created. Please try again later."
                     showAlert = true
                 } else {

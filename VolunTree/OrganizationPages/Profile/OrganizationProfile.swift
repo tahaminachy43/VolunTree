@@ -11,6 +11,7 @@ import Firebase
 import FirebaseAuth
 import FirebaseStorage
 
+/// Initial view upon signing in for organizations
 struct OrganizationProfile: View {
     @State private var orgName: String = "Organization Name"
     
@@ -267,11 +268,12 @@ struct OrganizationProfile: View {
         }
     }
 
-    
+    // TO DO: Allow orgto edit their pfp
     func updatePfpAPI(image: UIImage){
         
     }
     
+    // TO DO: Allow org to edit their description
     func updateDescriptionAPI(description: String){
 
     }
@@ -286,6 +288,7 @@ struct ImagePicker: View {
     }
 }
 
+// See: https://www.hackingwithswift.com/books/ios-swiftui/importing-an-image-into-swiftui-using-phpickerviewcontroller
 struct ImagePickerController: UIViewControllerRepresentable {
     @Binding var selectedImage: UIImage?
     

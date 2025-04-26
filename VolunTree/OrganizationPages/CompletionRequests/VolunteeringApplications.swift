@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+/// TO DO: View showing user applications to complete opportunities posted by this org
 struct VolunteeringApplications: View {
     var body: some View {
         NavigationView {
