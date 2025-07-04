@@ -16,11 +16,11 @@ struct CurrentVolunteers: View {
                     .ignoresSafeArea()
                 
                 VStack (spacing: 30){
-                    Text("Current Volunteers")
-                        .font(.largeTitle)
-                        .bold()
-                        .padding()
-                        .foregroundStyle(Color.darkGreen)
+//                    Text("Current Volunteers")
+//                        .font(.largeTitle)
+//                        .bold()
+//                        .padding()
+//                        .foregroundStyle(Color.darkGreen)
 
                                 
                 }

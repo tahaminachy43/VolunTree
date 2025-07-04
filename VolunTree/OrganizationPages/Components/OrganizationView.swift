@@ -16,9 +16,10 @@ struct OrganizationView: View {
             Color(Color.darkGreen)
             VStack {
                 if pageNum == 1 {
-                    VolunteerRequests()
+                    // VolunteerRequests()
                 } else if pageNum == 2 {
-                    CurrentVolunteers()
+                    // CurrentVolunteers()
+                    VolunteersPage()
                 } else if pageNum == 3 {
                     OrganizationProfile()
                 } else if pageNum == 4 {

@@ -42,11 +42,11 @@ struct VolunteerRequests: View {
                     .ignoresSafeArea()
                 
                 VStack (spacing: 30){
-                    Text("Volunteers requesting to join")
-                        .font(.title2)
-                        .bold()
-                        .padding()
-                        .foregroundStyle(Color.darkGreen)
+//                    Text("Volunteers requesting to join")
+//                        .font(.title2)
+//                        .bold()
+//                        .padding()
+//                        .foregroundStyle(Color.darkGreen)
                     
                     // request cards
                     ScrollView {
