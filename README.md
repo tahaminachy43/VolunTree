@@ -11,6 +11,7 @@ The app is organized into **3 main folders**:
 1. InitialPages/ (which has the SignIn/Register/Preferences views)
 2. OrganizationPages/
 3. UserPages/
+4. API - Contains our .NET backend
 
 The OrganizationPages/ and UserPages/ folders each contain a Components/ folder and a folder for each different page. This allows us to keep everything organized and efficiently find pages.
 
@@ -44,22 +45,8 @@ These are the general and main things left to complete:
 3. Make changes to the challenges view.
 4. Implement complete functionality for the user profile.
 5. Incorporate the app logo throughout the app.
-6. Move away from Firebase to a custom backend to avoid scaling costs (huge endeavour and should be implemented before the app gets too big).
+6. Move away from Firebase completely and fully integrate .NET backend into the app.
 
+**
+This project is continuously being worked on and will eventually be published on the app store.**
 
-We will continue this project over the summer and possibly the next Fall 2025 semester. In this continuation, we aim to complete all of the to-do features that were listed earlier. 
-
-_If you're reading this and are interested in helping out with this app over Summer 2025, please shoot an email to Savitur at saviturmaharaj@gmail.com._
-
-
-
-## Appendix A: Resources
-We made use of several resources, including Swift documentation, online articles (such as StackOverflow), video tutorials, and artificial intelligence (AI) tools like ChatGPT.
-
-**Use of AI Tools:**
-- ChatGPT - It was primarily used for the following things:
-  - Debugging Code: It helped identify and resolve syntax errors and logic issues.
-  - Styling the Frontend: It helped us with frontend styling, including animations and fixing bugs.
-  - Firebase Queries: It helped with the creation and optimization of Firebase queries for backend API calls.
-
-While AI helped us with the technical aspects and our learning, all final code and decisions were reviewed and implemented by the team. It was used as a resource for learning and problem-solving (along with the other resources mentioned earlier), which was especially useful as we started learning Swift at the beginning of the semester. It helped us implement more complex features, such as animations, more effectively.
