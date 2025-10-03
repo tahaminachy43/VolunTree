@@ -3,6 +3,7 @@ using System;
 using API.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace API.Data.Migrations
 {
     [DbContext(typeof(VoluntreeContext))]
-    partial class VoluntreeContextModelSnapshot : ModelSnapshot
+    [Migration("20250908223036_DummyIdentityAdded")]
+    partial class DummyIdentityAdded
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "8.0.19");
@@ -201,19 +204,19 @@ namespace API.Data.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "47bc5470-0843-4c63-b525-43c4b891f3b9",
+                            Id = "95361b44-cd83-4fc6-a6cd-8f66329eb083",
                             Name = "RegularUser",
                             NormalizedName = "REGULARUSER"
                         },
                         new
                         {
-                            Id = "8f49b43d-e9f1-4dd4-9751-075ac2373894",
+                            Id = "8ed02ade-3e06-4a7e-8b88-fcf3de4e09b5",
                             Name = "Org",
                             NormalizedName = "ORG"
                         },
                         new
                         {
-                            Id = "5f9d3e98-8f08-4966-91dd-9717add71829",
+                            Id = "08ec2be1-d7c4-4fc9-b87e-a9b03c8a7eae",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         });

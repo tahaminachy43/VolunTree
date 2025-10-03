@@ -1,12 +1,11 @@
+using Microsoft.AspNetCore.Identity;
+
 namespace API.Entities
 {
-    public class User
+    public class User : IdentityUser
     {
-        public int Id { get; set; }
-        public string FullName { get; set; } = string.Empty;
-        public string Email { get; set; } = string.Empty;
         public string Description { get; set; } = string.Empty;
-        public int HoursGoal { get; set; }
+        public int HoursGoal { get; set; } = 0;
         public string PfpURL { get; set; } = string.Empty;
         
         public ICollection<ApplicationToJoinVolOpp> Applications { get; set; } = new List<ApplicationToJoinVolOpp>(); // A user can have many applications

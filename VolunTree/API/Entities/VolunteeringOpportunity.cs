@@ -8,7 +8,7 @@ namespace API.Entities
         public string Address { get; set; } = string.Empty;
 
         // Foreign key to the org user
-        public int OrgId { get; set; }
+        public string OrgId { get; set; }
         public User Org { get; set; } = null!;
 
          // A user can have many type preferences

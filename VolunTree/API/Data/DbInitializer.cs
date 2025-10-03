@@ -1,14 +1,52 @@
+using System.Threading.Tasks;
 using API.Entities;
+using Microsoft.AspNetCore.Identity;
 
 namespace API.Data
 {
     public static class DbInitializer
     {
-        public static void Initialize(VoluntreeContext context)
+        public static async Task Initialize(VoluntreeContext context, UserManager<User> userManager)
         {
-            if (!context.Challenges.Any())
+            if (!userManager.Users.Any())
             {
-                var challenges = new List<Challenge>
+                var user = new User
+                {
+                    UserName = "Jason",
+                    Email = "jason@gmail.com"
+                };
+
+                var result1 = await userManager.CreateAsync(user, "Pa$$word123!");
+                if (result1.Succeeded)
+                {
+                    await userManager.AddToRoleAsync(user, "RegularUser");
+                }
+                else
+                {
+                    throw new Exception("Failed to create Jason: " + string.Join(", ", result1.Errors.Select(e => e.Description)));
+                }
+
+                var org = new User
+                {
+                    UserName = "GetosLAB",
+                    Email = "geto@gmail.com",
+                    Description = "We recruit high school and university students for our volunteering programs!"
+                };
+
+                var result2 = await userManager.CreateAsync(org, "Pa$$word123!");
+                if (result2.Succeeded)
+                {
+                    await userManager.AddToRoleAsync(org, "Org");
+                }
+                else
+                {
+                    throw new Exception("Failed to create Geto: " + string.Join(", ", result2.Errors.Select(e => e.Description)));
+                }
+            }
+            
+            if (!context.Challenges.Any())
+                {
+                    var challenges = new List<Challenge>
                 {
                     new Challenge
                     {
@@ -35,12 +73,12 @@ namespace API.Data
                     }
                 };
 
-                foreach (var challenge in challenges)
-                {
-                    context.Challenges.Add(challenge);
+                    foreach (var challenge in challenges)
+                    {
+                        context.Challenges.Add(challenge);
+                    }
+                    context.SaveChanges();
                 }
-                context.SaveChanges();
-            }
 
             if (!context.VolunteeringTypes.Any())
             {

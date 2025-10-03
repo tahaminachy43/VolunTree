@@ -3,9 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers
 {
-    [ApiController]
-    [Route("api/[controller]")]
-    public class OrgsController : ControllerBase
+    public class OrgsController : BaseApiController
     {
         private readonly VoluntreeContext _context;
         public OrgsController(VoluntreeContext context)
