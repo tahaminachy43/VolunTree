@@ -33,5 +33,11 @@ namespace API.Controllers
         {
             return await _context.Challenges.ToListAsync();
         }
+
+        // Endpoints to create currently:
+
+        // 1. When registering: receive types from user and their hours goal. Set on their profile.
+        // 2. Get list of volunteering opportunities on main screen
+
     }
 }
