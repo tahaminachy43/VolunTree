@@ -248,9 +248,6 @@
 				API/obj/project.nuget.cache,
 				API/Program.cs,
 				API/Properties/launchSettings.json,
-				API/voluntree.db,
-				"API/voluntree.db-shm",
-				"API/voluntree.db-wal",
 				Info.plist,
 				VolunTree.sln,
 			);
