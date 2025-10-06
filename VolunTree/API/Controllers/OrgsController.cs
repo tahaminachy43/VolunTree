@@ -72,7 +72,6 @@ namespace API.Controllers
             return Ok(response);
         }
 
-
         // 3. Org edits their profile description:
         [HttpPut("profile/description")]
         public async Task<ActionResult> UpdateDescription([FromBody] string newDescription)
